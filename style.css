@@ -1,5 +1,9 @@
 body {
-	background-color: rgb(224,224,224);
+	/*background-color: rgb(224,224,224);*/
+	background: url(images/codeBackground3.jpg);
+	/*background-size: cover;*/
+	background-position: 0px 50px;
+	background-repeat: repeat;
 }
 
 .title {
@@ -14,26 +18,34 @@ body {
 	font-family: "Verdana,Arial,Helvetica";
 }
 
-.top {
-	border: 3px double #0000FF;
-	background: #C1FFC1;
-	width: 285px; 
+
+
+.nav.navbar-nav li a {
+   color: #fff;
+ }
+ 
+ .nav.navbar-nav li a:hover {
+   color: red;
+ }
+
+.nav.navbar-nav a:hover {
+ color: grey;
 }
 
-.explain {
-	font-weight: bold; 
-	color: #0000FF;
+.navbar-inverse .navbar-brand {
+	color: #fff;
 }
 
-.formBox {
-	 border-color: #3CB371;
-	 width: 420px; 
+.navbar-inverse .navbar-brand:hover {
+	color: red;
 }
 
-.blue {
-	color: #0000FF;
+/* Dropdown menu background color*/
+.navbar-nav > li > .dropdown-menu {     
+	background-color: #e7e7e7;  
 }
 
-.border {
-	border: 1px solid black;
+/* Dropdown menu font color*/ 
+ .navbar-nav > li > .dropdown-menu a {   
+	color: #555555;  
 }
