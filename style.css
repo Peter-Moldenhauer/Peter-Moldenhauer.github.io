@@ -1,9 +1,5 @@
 body {
-	/*background-color: rgb(224,224,224);*/
-	background: url(images/codeBackground3.jpg);
-	/*background-size: cover;*/
-	background-position: 0px 50px;
-	background-repeat: repeat;
+	background-color: rgb(224,224,224);
 }
 
 .title {
@@ -16,36 +12,4 @@ body {
 .well {
 	font-size: 18px;
 	font-family: "Verdana,Arial,Helvetica";
-}
-
-
-
-.nav.navbar-nav li a {
-   color: #fff;
- }
- 
- .nav.navbar-nav li a:hover {
-   color: red;
- }
-
-.nav.navbar-nav a:hover {
- color: grey;
-}
-
-.navbar-inverse .navbar-brand {
-	color: #fff;
-}
-
-.navbar-inverse .navbar-brand:hover {
-	color: red;
-}
-
-/* Dropdown menu background color*/
-.navbar-nav > li > .dropdown-menu {     
-	background-color: #e7e7e7;  
-}
-
-/* Dropdown menu font color*/ 
- .navbar-nav > li > .dropdown-menu a {   
-	color: #555555;  
 }
