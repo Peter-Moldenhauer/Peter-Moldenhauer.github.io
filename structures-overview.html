@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Structures, Sorting and Such</title>
+    <!-- code below used for bootstrap -->
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  <!-- viewport is the users screen, and the 2 settings used here is the width of screen of device and initial scale means don't zoom in or out just 100% -->
+    
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  <!-- standard jquery library --> 
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	
+	<!-- code above used for bootstrap --> 
+	<link rel ="stylesheet" href = "style.css" type = "text/css">
+</head>
+<body>
+
+	<!-- navigation bar in bootstrap --> 
+	
+	<nav class="navbar navbar-inverse">  <!-- navbar-default is the styling of the navbar --> 
+		<div class="container-fluid">
+		
+			<!-- Logo Below --> 
+			<div class="navbar-header"> <!-- this lets bootstrap know that this isnt an actual button but just a logo --> 
+				<a href="index.html" class="navbar-brand">Home</a>  <!-- you could link this to the homepage but the # is used for a dead link --> 
+			</div>
+			
+			<!-- Menu Items Below -->
+			<div>
+				<ul class="nav navbar-nav">
+					
+					<!-- Drop down menu, this will be in the list at top but itself will contain another list -->
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures <span class="caret"></span></a>  <!-- this is the "link" with a down arrow the user can click on to see the other menu items in the dropdown list -->
+						<ul class="dropdown-menu"> <!-- dropdown menu items --> 
+							<li><a href="structures-overview.html">Overview of Data Structures</a></li>
+							<li><a href="#">Stack - Dynamic Array</a></li>
+							<li><a href="#">Queue - Linked List</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sorting Algorithms <span class="caret"></span></a>  <!-- this is the "link" with a down arrow the user can click on to see the other menu items in the dropdown list -->
+						<ul class="dropdown-menu"> <!-- dropdown menu items --> 
+							<li><a href="#">Overview of Sorting Algorithms</a></li>
+							<li><a href="#">Bubble Sort</a></li>
+							<li><a href="#">Merge Sort</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Misc. Algorithms <span class="caret"></span></a>  <!-- this is the "link" with a down arrow the user can click on to see the other menu items in the dropdown list -->
+						<ul class="dropdown-menu"> <!-- dropdown menu items --> 
+							<li><a href="#">Overview of other algorithms</a></li>
+							<li><a href="#">Binary Search</a></li>
+							<li><a href="#">Page Rank Algorithm</a></li>
+							<li><a href="#">Euclid's Algorithm</a></li>
+						</ul>
+					</li>
+					
+				</ul>
+				
+				<!-- right align menu items -->
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="aboutMe.html">About Me</a></li>
+				</ul>
+				
+			</div>
+		
+		</div>
+	</nav>
+	
+	<!-- Main Content (below navigation bar) -->
+	<div class="container">     <!-- class=container-fluid is full screen, class=container is just a fixed width --> 
+		
+		<h1 class="title">Overview of Data Structures</h1>
+		<!-- a well is a "floating island" that has a boarder and a grey background -->
+		<div class="well">
+			
+			<p>
+				<b>Data Structure vs. Abstract Data Type (ADT):</b><br>
+				The study of data structures is concerned largely with the need to maintain collections of values. These are sometimes termed <i>containers</i>. 
+				(Budd, Timothy. "An Active Learning approach to Data Structures using C") Over the years computer programmers have identified a few different ways 
+				of organizing collections of data. These collections of data (i.e. "containers") are the core cocepts involved in the study of data structures. There 
+				are numerous different types of these containers, each with their own different purposes and behaviors. These containers are commonly called "abstract 
+				data types" (ADTs). In this website I will cover the implementation of the following abstract data types: 
+				<ul>
+					<li>Stack</li>
+					<li>Bag</li>
+					<li>Queue</li>
+					<li>Deque</li>
+					<li>Priority Queue</li>
+					<li>Map</li>
+				</ul>
+				
+				Although sometimes used interchangeably, the terms "abstract data types" and "data structures" refer to two different ideas. An abstract 
+				data type is the general picture and description of the manner in which operations manipulate data. A data structure is the actual implementation and 
+				algorithms that manipulates data in certain ways. In other words, an abstract data type is of the logical level and a data strucutre is of the 
+				implementation level. For example, some of the common abstract data types are: stack, bag and queue. Some common data structures are dynamic arrays and 
+				linked lists. A stack ADT can be implemented with a dynamic array or a linked list, similar to how a queue ADT can be implemented with a dynamic array or 
+				a linked list as well. To put it more simply, an ADT can have many implementations using several different data structures. <br><br>
+				
+				<b>Three levels of Abstraction:</b><br>
+				Wikipedia describes the term "abstraction" as "the process or result of generalization by reducing the information content of a concept to retain only 
+				information which is relevant for a particular purpose." Relating this to data structures, there are three main levels of abstraction (abstract data types) in the study of data structures 
+				that I should point out:
+				<ul>
+					<li>Interface: Describes the properties and behaviors of a collection of data - what does a specific abstract data type do?</li>
+					<li>Application: How is a particular collection of data used - why is a specific abstract data type useful and what can you do with it?</li>
+					<li>Implementation: Looks at specific implementations of certain abstract data types in a particular language - how to code a spcific abstract data type.</li>
+				</ul>
+				It should be noted that the first two levels of abstraction listed above are completely independent of any particular language. On this webpage (below) I will 
+				describe these first two levels of abstraction for various abstract data types to give an idea of how and why they are used. Then, on each of the remaining links 
+				in the dropdown menu I will describe how to code a given abstract data type using a spcific data structure and a specific language to code the data structure in. 
+				I will primarilly use the C programming language to implement the abstract data types but I may also include code from some other languages periodically 
+				to compare differences in the implementations.<br><br>
+				
+				<b>Stack ADT:</b><br>
+				The Stack abstract data type is a <i>linear</i> collection. This means that the order that the elements are placed into is important. The specific order 
+				property that a Stack has is a first-in, last-out (FILO) property (or also known as the other way around as having a last-in, first-out (LIFO) property). 
+				This means that the first item added to the Stack is the last item removed, and the most recent item added to the stack is the first item removed. You can 
+				visualize a Stack ADT as a stack of plates. You can only remove the top-most plate in the collection at a time. <br><br>
+				The interface of a Stack typically has the three operations of push, top and pop. These are the three main things that a Stack can do. Push means to push something 
+				on the top of the Stack. Top means to "look" at the value on top of the Stack. Pop means to take something off from the top of the Stack. These inteface functions 
+				can be seen below as well as the two other functions to initialize a Stack and to determine if a stack is empty.
+				<ul>
+					<li>initStack();</li>
+					<li>pushStack(val);</li>
+					<li>vatType topStack();</li>
+					<li>popStack();</li>
+					<li>bool isEmptyStack();</li>
+				</ul>
+				There are many different uses and applications for a Stack ADT. A Stack is really good at "remembering" things, so one application for a stack would be to 
+				check for balanced parenthesis. <br><br>
+				
+			</p>
+			
+		</div>
+		
+		<center>&copy Peter Moldenhauer April 7th 2017 ~ moldenhp@oregonstate.edu</center><br> 
+		
+	</div>
+	
+</body>
+</html>
