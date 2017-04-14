@@ -13,3 +13,13 @@ body {
 	font-size: 18px;
 	font-family: "Verdana,Arial,Helvetica";
 }
+
+.roundPic {
+	border-radius: 20px;
+	height: auto;
+	width: auto;
+	max-height: 250px;
+	max-width: 250px;
+	float: left;
+	margin: 15px 15px 0 0;
+}
