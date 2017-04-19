@@ -52,8 +52,7 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sorting Algorithms <span class="caret"></span></a>  <!-- this is the "link" with a down arrow the user can click on to see the other menu items in the dropdown list -->
 						<ul class="dropdown-menu"> <!-- dropdown menu items --> 
 							<li><a href="sorting-overview.html">Overview of Sorting Algorithms</a></li>
-							<li><a href="#">Bubble Sort</a></li>
-							<li><a href="#">Merge Sort</a></li>
+							<li><a href="bubbleSort.html">Bubble Sort</a></li>
 						</ul>
 					</li>
 					
@@ -98,92 +97,11 @@
 				
 				<b>arrayBag.h</b><br>
 				<pre>
-# ifndef ArrayBag
-# define ArrayBag
-
-# define TYPE int 
-
-struct arrayBag {
-	TYPE data [100];
-	int count;
-};
-
-void initArray(struct arrayBag * b);
-void addArray(struct arrayBag * b, TYPE v);
-int containsArray(struct arrayBag * b, TYPE v);
-void removeArray(struct arrayBag *b, TYPE v);
-int sizeArray(struct arrayBag * b);
-
-# endif</pre><br>
+# ifndef ArrayBag&#10;# define ArrayBag&#10;&#10;# define TYPE int &#10;&#10;struct arrayBag {&#10;&#9;TYPE data [100];&#10;&#9;int count;&#10;};&#10;&#10;void initArray(struct arrayBag * b);&#10;void addArray(struct arrayBag * b, TYPE v);&#10;int containsArray(struct arrayBag * b, TYPE v);&#10;void removeArray(struct arrayBag *b, TYPE v);&#10;int sizeArray(struct arrayBag * b);&#10;&#10;# endif</pre><br>
 
 			<b>arrayBag.c</b><br>
 			<pre>
-#include "arrayBag.h"
-#include <assert.h>
-#include <stdlib.h>
-#include <stdio.h>
-
-struct arrayBag {
-	TYPE data [100];
-	int count;
-};
-
-// This function allocates space for an arrayBag structure 
-struct arrayBag * createArray() {
-	struct arrayBag * b = malloc(sizeof(struct arrayBag));
-	return b;
-}		
-
-// This function initializes the starting size of the array to 0
-void initArray (struct arrayBag * b) {
-	b->count = 0; 
-}	
-
-// This function adds an element to the array and then increments the count of elements in the array
-void addArray(struct arrayBag *b, TYPE v) {
-	b->data[b->count] = v;
-	b->count++;
-}
-
-// This function returns 1 (true) if a given value is contained in the array or 0 (false) if it is not in the array.
-int containsArray(struct arrayBag *b, TYPE v) {
-	int i;
-	for(i=0; i<b->count; i++){
-		if(b->count == v)
-			return 1;
-	}
-	return 0;
-}
-
-// This function removes a given value from the array 
-void removeArray(struct arrayBag * b, TYPE v) {
-	int i = 0;
-	int j;
-	
-	assert(containsArray(b, v)); // gives an error if you try to remove something not in the array 
-	
-	// find the index after the element
-	while(b->data[i] != v)
-		i = i + 1;
-	
-	// slide the elements to fill the gap 
-	for(j=i; j<b->count-1; j++)
-		b->data[j] = b->data[j+1];
-	
-	b->count = b->count-1; 
-}
-
-// This function returns the size of the array (the number of elements in the Bag) 
-int sizeArray(struct arrayBag *b) {
-	return b->count;
-}
-
-// This function prints out all of the values that are in the Bag
-void printArray(struct arrayBag * b) {
-	int i;
-	for(i=0; i<100; i++)
-		printf("Array[i] = %d\n", b->data[i]); 
-}</pre>
+#include &#34;arrayBag.h&#34;&#10;#include &lt;assert.h&gt;&#10;#include &lt;stdlib.h&gt;&#10;#include &lt;stdio.h&gt;&#10;&#10;struct arrayBag {&#10;&#9;TYPE data [100];&#10;&#9;int count;&#10;};&#10;&#10;// This function allocates space for an arrayBag structure &#10;struct arrayBag * createArray() {&#10;&#9;struct arrayBag * b = malloc(sizeof(struct arrayBag));&#10;&#9;return b;&#10;}&#9;&#9;&#10;&#10;// This function initializes the starting size of the array to 0&#10;void initArray (struct arrayBag * b) {&#10;&#9;b-&gt;count = 0; &#10;}&#9;&#10;&#10;// This function adds an element to the array and then increments the count of elements in the array&#10;void addArray(struct arrayBag *b, TYPE v) {&#10;&#9;b-&gt;data[b-&gt;count] = v;&#10;&#9;b-&gt;count++;&#10;}&#10;&#10;// This function returns 1 (true) if a given value is contained in the array or 0 (false) if it is not in the array.&#10;int containsArray(struct arrayBag *b, TYPE v) {&#10;&#9;int i;&#10;&#9;for(i=0; i&lt;b-&gt;count; i++){&#10;&#9;&#9;if(b-&gt;count == v)&#10;&#9;&#9;&#9;return 1;&#10;&#9;}&#10;&#9;return 0;&#10;}&#10;&#10;// This function removes a given value from the array &#10;void removeArray(struct arrayBag * b, TYPE v) {&#10;&#9;int i = 0;&#10;&#9;int j;&#10;&#9;&#10;&#9;assert(containsArray(b, v)); // gives an error if you try to remove something not in the array &#10;&#9;&#10;&#9;// find the index after the element&#10;&#9;while(b-&gt;data[i] != v)&#10;&#9;&#9;i = i + 1;&#10;&#9;&#10;&#9;// slide the elements to fill the gap &#10;&#9;for(j=i; j&lt;b-&gt;count-1; j++)&#10;&#9;&#9;b-&gt;data[j] = b-&gt;data[j+1];&#10;&#9;&#10;&#9;b-&gt;count = b-&gt;count-1; &#10;}&#10;&#10;// This function returns the size of the array (the number of elements in the Bag) &#10;int sizeArray(struct arrayBag *b) {&#10;&#9;return b-&gt;count;&#10;}&#10;&#10;// This function prints out all of the values that are in the Bag&#10;void printArray(struct arrayBag * b) {&#10;&#9;int i;&#10;&#9;for(i=0; i&lt;100; i++)&#10;&#9;&#9;printf(&#34;Array[i] = %d\n&#34;, b-&gt;data[i]); &#10;}</pre>
 			</p>
 			
 		</div>

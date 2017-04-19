@@ -52,8 +52,7 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sorting Algorithms <span class="caret"></span></a>  <!-- this is the "link" with a down arrow the user can click on to see the other menu items in the dropdown list -->
 						<ul class="dropdown-menu"> <!-- dropdown menu items --> 
 							<li><a href="sorting-overview.html">Overview of Sorting Algorithms</a></li>
-							<li><a href="#">Bubble Sort</a></li>
-							<li><a href="#">Merge Sort</a></li>
+							<li><a href="bubbleSort.html">Bubble Sort</a></li>
 						</ul>
 					</li>
 					
@@ -102,177 +101,11 @@
 				
 				<b>dynArrADT.h</b><br>
 				<pre>
-# ifndef dynArrADT
-# define dynArrADT
-
-# define TYPE int 
-
-struct DynArr {
-	TYPE * data;
-	int size;
-	int capacity;
-};
-
-void initDynArr(struct DynArr *v, int capacity);
-void freeDynArr(struct DynArr *v);
-int sizeDynArr(struct DynArr *v);
-void addDynArr(struct DynArr *v, TYPE val);
-TYPE getDynArr(struct DynArr *v, int position);
-void putDynArr(struct DynArr *v, int position, TYPE value);
-void removeAtDynArr(struct DynArr *v, int position);
-void swapDynArr(struct DynArr *v, int i, int j);
-
-void removeDynArr(struct DynArr *v, TYPE value);
-int containsDynArr(struct DynArr *v, TYPE value);
-
-# endif</pre><br>
+# ifndef dynArrADT&#10;# define dynArrADT&#10;&#10;# define TYPE int &#10;&#10;struct DynArr {&#10;&#9;TYPE * data;&#10;&#9;int size;&#10;&#9;int capacity;&#10;};&#10;&#10;void initDynArr(struct DynArr *v, int capacity);&#10;void freeDynArr(struct DynArr *v);&#10;int sizeDynArr(struct DynArr *v);&#10;void addDynArr(struct DynArr *v, TYPE val);&#10;TYPE getDynArr(struct DynArr *v, int position);&#10;void putDynArr(struct DynArr *v, int position, TYPE value);&#10;void removeAtDynArr(struct DynArr *v, int position);&#10;void swapDynArr(struct DynArr *v, int i, int j);&#10;&#10;void removeDynArr(struct DynArr *v, TYPE value);&#10;int containsDynArr(struct DynArr *v, TYPE value);&#10;&#10;# endif</pre><br>
 
 			<b>dynArrADT.c</b><br>
 			<pre>
-#include "dynArrADT.h"
-#include <assert.h>
-#include <stdlib.h>
-#include <stdio.h>
-
-struct DynArr {
-	TYPE * data;
-	int size;
-	int capacity;
-};
-
-struct DynArr * createDynArr()
-{
-	struct DynArr * v = malloc(sizeof(struct DynArr));
-	
-	return v; 
-}
-
-
-void initDynArr(struct DynArr *v, int capacity)
-{
-	v->data = malloc(sizeof(TYPE) * capacity);
-	
-	v->size = 0;
-	v->capacity = capacity;
-}
-
-
-void freeDynArr(struct DynArr *v)
-{
-	if (v->data != 0)
-	{
-		free(v->data);
-		v->data = 0;
-	}
-	v->size = 0;
-	v->capacity = 0;
-}
-
-
-int sizeDynArr(struct DynArr *v)
-{
-	return v->size; 
-}
-
-
-void _setCapacityDynArr(struct DynArr *v, int newCap)
-{
-	int i;
-	
-	TYPE *newData = malloc(sizeof(TYPE) * newCap);
-	
-	for (i = 0; i < v->capacity; i++)
-	{
-		newData[i] = v->data[i]; 
-	}
-	
-	free(v->data);
-	
-	v->data = newData;
-	v->capacity = newCap; 
-}
-
-
-void addDynArr(struct DynArr *v, TYPE val)
-{
-	if (v->size >= v->capacity)
-		_setCapacityDynArr(v, v->capacity * 2);
-		
-	v->data[v->size] = val;
-	
-	v->size++; 
-}
-
-
-TYPE getDynArr(struct DynArr *v, int position)
-{
-	assert((position >= 0) && (position < v->size));
-	
-	return v->data[position]; 
-}
-
-
-void putDynArr(struct DynArr *v, int position, TYPE value)
-{
-	assert((position >= 0) && (position < v->size));
-	
-	v->data[position] = value;
-}
-
-
-void removeAtDynArr(struct DynArr *v, int position)
-{
-	assert((position >= 0) && (position < v->size));
-	
-	while (position < v->size - 1)
-	{
-		v->data[position] = v->data[position + 1];
-		position++;
-	}
-	
-	v->size--;
-}
-
-
-void swapDynArr(struct DynArr *v, int i, int j)
-{
-	assert((i >= 0) && (i < v->size));
-	assert((j >= 0) && (j < v->size)); 
-	
-	TYPE temp;
-	
-	temp = v->data[i];
-	v->data[i] = v->data[j];
-	v->data[j] = temp;
-}
-
-
-void removeDynArr(struct DynArr *v, TYPE value)
-{
-	int i;
-	
-	for (i = 0; i < v->size; i++)
-	{
-		if (v->data[i] == value)
-		{
-			removeAtDynArr(v, value);
-			return; 
-		}	
-	}
-}
-
-
-int containsDynArr(struct DynArr *v, TYPE value)
-{
-	int i;
-	
-	for (i = 0; i < v->size; i++)
-	{
-		if (v->data[i] == value)
-			return 1;
-	}
-	return 0; 
-}</pre>
+#include &#34;dynArrADT.h&#34;&#10;#include &lt;assert.h&gt;&#10;#include &lt;stdlib.h&gt;&#10;#include &lt;stdio.h&gt;&#10;&#10;struct DynArr {&#10;&#9;TYPE * data;&#10;&#9;int size;&#10;&#9;int capacity;&#10;};&#10;&#10;struct DynArr * createDynArr()&#10;{&#10;&#9;struct DynArr * v = malloc(sizeof(struct DynArr));&#10;&#9;&#10;&#9;return v; &#10;}&#10;&#10;&#10;void initDynArr(struct DynArr *v, int capacity)&#10;{&#10;&#9;v-&gt;data = malloc(sizeof(TYPE) * capacity);&#10;&#9;&#10;&#9;v-&gt;size = 0;&#10;&#9;v-&gt;capacity = capacity;&#10;}&#10;&#10;&#10;void freeDynArr(struct DynArr *v)&#10;{&#10;&#9;if (v-&gt;data != 0)&#10;&#9;{&#10;&#9;&#9;free(v-&gt;data);&#10;&#9;&#9;v-&gt;data = 0;&#10;&#9;}&#10;&#9;v-&gt;size = 0;&#10;&#9;v-&gt;capacity = 0;&#10;}&#10;&#10;&#10;int sizeDynArr(struct DynArr *v)&#10;{&#10;&#9;return v-&gt;size; &#10;}&#10;&#10;&#10;void _setCapacityDynArr(struct DynArr *v, int newCap)&#10;{&#10;&#9;int i;&#10;&#9;&#10;&#9;TYPE *newData = malloc(sizeof(TYPE) * newCap);&#10;&#9;&#10;&#9;for (i = 0; i &lt; v-&gt;capacity; i++)&#10;&#9;{&#10;&#9;&#9;newData[i] = v-&gt;data[i]; &#10;&#9;}&#10;&#9;&#10;&#9;free(v-&gt;data);&#10;&#9;&#10;&#9;v-&gt;data = newData;&#10;&#9;v-&gt;capacity = newCap; &#10;}&#10;&#10;&#10;void addDynArr(struct DynArr *v, TYPE val)&#10;{&#10;&#9;if (v-&gt;size &gt;= v-&gt;capacity)&#10;&#9;&#9;_setCapacityDynArr(v, v-&gt;capacity * 2);&#10;&#9;&#9;&#10;&#9;v-&gt;data[v-&gt;size] = val;&#10;&#9;&#10;&#9;v-&gt;size++; &#10;}&#10;&#10;&#10;TYPE getDynArr(struct DynArr *v, int position)&#10;{&#10;&#9;assert((position &gt;= 0) &amp;&amp; (position &lt; v-&gt;size));&#10;&#9;&#10;&#9;return v-&gt;data[position]; &#10;}&#10;&#10;&#10;void putDynArr(struct DynArr *v, int position, TYPE value)&#10;{&#10;&#9;assert((position &gt;= 0) &amp;&amp; (position &lt; v-&gt;size));&#10;&#9;&#10;&#9;v-&gt;data[position] = value;&#10;}&#10;&#10;&#10;void removeAtDynArr(struct DynArr *v, int position)&#10;{&#10;&#9;assert((position &gt;= 0) &amp;&amp; (position &lt; v-&gt;size));&#10;&#9;&#10;&#9;while (position &lt; v-&gt;size - 1)&#10;&#9;{&#10;&#9;&#9;v-&gt;data[position] = v-&gt;data[position + 1];&#10;&#9;&#9;position++;&#10;&#9;}&#10;&#9;&#10;&#9;v-&gt;size--;&#10;}&#10;&#10;&#10;void swapDynArr(struct DynArr *v, int i, int j)&#10;{&#10;&#9;assert((i &gt;= 0) &amp;&amp; (i &lt; v-&gt;size));&#10;&#9;assert((j &gt;= 0) &amp;&amp; (j &lt; v-&gt;size)); &#10;&#9;&#10;&#9;TYPE temp;&#10;&#9;&#10;&#9;temp = v-&gt;data[i];&#10;&#9;v-&gt;data[i] = v-&gt;data[j];&#10;&#9;v-&gt;data[j] = temp;&#10;}&#10;&#10;&#10;void removeDynArr(struct DynArr *v, TYPE value)&#10;{&#10;&#9;int i;&#10;&#9;&#10;&#9;for (i = 0; i &lt; v-&gt;size; i++)&#10;&#9;{&#10;&#9;&#9;if (v-&gt;data[i] == value)&#10;&#9;&#9;{&#10;&#9;&#9;&#9;removeAtDynArr(v, value);&#10;&#9;&#9;&#9;return; &#10;&#9;&#9;}&#9;&#10;&#9;}&#10;}&#10;&#10;&#10;int containsDynArr(struct DynArr *v, TYPE value)&#10;{&#10;&#9;int i;&#10;&#9;&#10;&#9;for (i = 0; i &lt; v-&gt;size; i++)&#10;&#9;{&#10;&#9;&#9;if (v-&gt;data[i] == value)&#10;&#9;&#9;&#9;return 1;&#10;&#9;}&#10;&#9;return 0; &#10;}</pre>
 			</p>
 			
 		</div>

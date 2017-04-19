@@ -52,8 +52,7 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sorting Algorithms <span class="caret"></span></a>  <!-- this is the "link" with a down arrow the user can click on to see the other menu items in the dropdown list -->
 						<ul class="dropdown-menu"> <!-- dropdown menu items --> 
 							<li><a href="sorting-overview.html">Overview of Sorting Algorithms</a></li>
-							<li><a href="#">Bubble Sort</a></li>
-							<li><a href="#">Merge Sort</a></li>
+							<li><a href="bubbleSort.html">Bubble Sort</a></li>
 						</ul>
 					</li>
 					
@@ -105,22 +104,7 @@
 				
 				<b>Binary Search function:</b><br>
 				<pre>
-int _binarySearch(TYPE * data, int size, TYPE val)
-{
-	int low = 0;        // initialize low to index[0]
-	int high = size;    // initialize high to index[size] Note: this is one after the last element in the array 
-	int mid; 
-	
-	while (low < high)
-	{
-		mid = (low + high) / 2;   // initialize mid to the middle of the array 
-		if (data[mid] < val)
-			low = mid + 1;
-		else 
-			high = mid;
-	}
-	return low; 
-}</pre>
+int _binarySearch(TYPE * data, int size, TYPE val)&#10;{&#10;&#9;int low = 0;        // initialize low to index[0]&#10;&#9;int high = size;    // initialize high to index[size] Note: this is one after the last element in the array &#10;&#9;int mid; &#10;&#9;&#10;&#9;while (low &lt; high)&#10;&#9;{&#10;&#9;&#9;mid = (low + high) / 2;   // initialize mid to the middle of the array &#10;&#9;&#9;if (data[mid] &lt; val)&#10;&#9;&#9;&#9;low = mid + 1;&#10;&#9;&#9;else &#10;&#9;&#9;&#9;high = mid;&#10;&#9;}&#10;&#9;return low; &#10;}</pre>
 			</p>
 			
 		</div>
