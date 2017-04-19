@@ -82,31 +82,25 @@
 	<!-- Main Content (below navigation bar) -->
 	<div class="container">     <!-- class=container-fluid is full screen, class=container is just a fixed width --> 
 		
-		<h1 class="title">Structures, Sorting and Such</h1>
+		<!-- <center><img src="images/underConstruction.jpg"></center><br> -->
+		<h1 class="title">Single Linked List implementation of the Stack (ADT)</h1>
 		<!-- a well is a "floating island" that has a boarder and a grey background -->
 		<div class="well">
 			
 			<p>
-				Welcome to Structures, Sorting and Such! This is a website that I built to reinforce my understanding of various data 
-				structures, sorting algorithms and other miscellaneous algorithms. Data structures and algorithms are two critical concepts in the 
-				world of computer science. My hope is that this website will serve as a "quick reference guide" to not only myself but also others
-				who may need a quick refresher on these topics.<br><br>
+				Arrays and dynamic arrays are nice because they offer random access but there are downsides to them as well. The biggest issue here is that because 
+				arrays are blocks of contiguous memory, when an element is added or removed from the array, you need to either slide the remaining elements over 
+				to make space for the new element or slide the elements over to fill the "hole" of the removed element. This results in an expensive (O(n)) operation 
+				to move the elements around. A linked list is another type of data structure that addresses this issue that arrays are faced with. <br><br>
 				
-				I aimed to include some of the most popular and well known data structures and algorithms in this website. I feel like 
-				the collection that I discuss in this website encompasses the common data structures and algorithms that are brought up in schoolwork, job interviews and every day programming. 
-				Of course there are still many other "lesser known" structures and alorithms that I have not included in this website that are still important to know 
-				in the world of computer science.<br><br>
+				In linked lists, the data elements are held in structures called "links" and these links are created at runtime. Therefore, you do not have to decide 
+				beforehand how many of the links you need. The links are essentially like links in a chain. Each link has a value associated with it and it has a pointer 
+				to the next link in the chain. For each data element that you have, there is one link associated with it. Links are allocated as necessary and deallocated 
+				as necessary during runtime. It should be noted that the links in a linked list are NOT contiguously stored. The links are "scattered" about in memory.<br><br> 
 				
-				Use the naviation bar at the top to select either Data Structures, Sorting Algorithms or Misc. Algorithms.  
-				The first page/link in the dropdown menu for each of these three categories gives a general overview of the given category. The preceding pages/links in the 
-				drop down menu will each cover a unique topic for the given category (Ex. the "Bubble Sort" link of the "Sorting Algorithms" dropdown menu will cover the bubble sort 
-				algorithm).<br><br>
-
-				Click on the "About Me" link in the right side of the naviation bar to learn about who I am 
-				and how to contact me.<br><br>
 				
-				Thank you for visiting this website! Good luck and happy coding!
-			</p>
+				<pre>
+// LINKED LIST STACK&#10; &#10; &#10;struct Link{&#10;&#9;TYPE val;&#10;&#9;struct Link *next;&#10;};&#10; &#10; &#10;struct LinkedList{&#10;&#9;struct Link *firstLink;&#10;};&#10;&#10;&#10;struct LinkedList * createLinkedList()&#10;{&#10;&#9;struct LinkedList * newList = malloc(sizeof(struct LinkedList));&#10;&#9;&#10;&#9;initLinkedList(newList);&#10;&#9;&#10;&#9;return newList;&#10;}&#10;&#10;&#10;void initLinkedList(struct LinkedList *l)&#10;{&#10;&#9;l-&gt;firstLink = NULL;&#10;}&#10;&#10;&#10;void _freeLinkedList(struct LinkedList *l)&#10;{&#10;&#9;while(isEmptyLinkedList(l) != 1)&#10;&#9;{&#10;&#9;&#9;popLinkedList(l);&#10;&#9;}&#10;}&#10;&#10;&#10;void deleteLinkedList(struct LinkedList *l)&#10;{&#10;&#9;_freeLinkedList(l);&#10;&#9;&#10;&#9;free(l);&#10;}&#10;&#10;&#10;void pushLinkedList(struct LinkedList *l, TYPE val)&#10;{&#10;&#9;struct Link *link = malloc(sizeof(struct Link));&#10;&#9;&#10;&#9;link-&gt;next = l-&gt;firstLink;&#10;&#9;&#10;&#9;link-&gt;val = val; &#10;&#9;&#10;&#9;l-&gt;firstLink = link; &#10;}&#10;&#10;&#10;TYPE topLinkedList(struct LinkedList *l)&#10;{&#10;&#9;assert(isEmptyLinkedList(l) != 1);&#10;&#9;&#10;&#9;return l-&gt;firstLink-&gt;val;&#10;}&#10;&#10;&#10;void popLinkedList(struct LinkedList *l)&#10;{&#10;&#9;assert(isEmptyLinkedList(l) != 1);&#10;&#9;&#10;&#9;struct Link *temp = l-&gt;firstLink;&#10;&#9;&#10;&#9;l-&gt;firstLink = l-&gt;firstLink-&gt;next;&#10;&#9;&#10;&#9;free(temp);&#10;}&#10;&#10;&#10;int isEmptyLinkedList(struct LinkedList *l)&#10;{&#10;&#9;if(l-&gt;firstLink == 0)&#10;&#9;&#9;return 1;&#10;&#9;else&#10;&#9;&#9;return 0; &#10;}</pre>
 			
 		</div>
 		

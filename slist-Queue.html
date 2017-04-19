@@ -82,32 +82,25 @@
 	<!-- Main Content (below navigation bar) -->
 	<div class="container">     <!-- class=container-fluid is full screen, class=container is just a fixed width --> 
 		
-		<h1 class="title">Structures, Sorting and Such</h1>
+		<!-- <center><img src="images/underConstruction.jpg"></center><br> -->
+		<h1 class="title">Single Linked List implementation of the Queue (ADT)</h1>
 		<!-- a well is a "floating island" that has a boarder and a grey background -->
 		<div class="well">
 			
 			<p>
-				Welcome to Structures, Sorting and Such! This is a website that I built to reinforce my understanding of various data 
-				structures, sorting algorithms and other miscellaneous algorithms. Data structures and algorithms are two critical concepts in the 
-				world of computer science. My hope is that this website will serve as a "quick reference guide" to not only myself but also others
-				who may need a quick refresher on these topics.<br><br>
+				Arrays and dynamic arrays are nice because they offer random access but there are downsides to them as well. The biggest issue here is that because 
+				arrays are blocks of contiguous memory, when an element is added or removed from the array, you need to either slide the remaining elements over 
+				to make space for the new element or slide the elements over to fill the "hole" of the removed element. This results in an expensive (O(n)) operation 
+				to move the elements around. A linked list is another type of data structure that addresses this issue that arrays are faced with. <br><br>
 				
-				I aimed to include some of the most popular and well known data structures and algorithms in this website. I feel like 
-				the collection that I discuss in this website encompasses the common data structures and algorithms that are brought up in schoolwork, job interviews and every day programming. 
-				Of course there are still many other "lesser known" structures and alorithms that I have not included in this website that are still important to know 
-				in the world of computer science.<br><br>
+				In linked lists, the data elements are held in structures called "links" and these links are created at runtime. Therefore, you do not have to decide 
+				beforehand how many of the links you need. The links are essentially like links in a chain. Each link has a value associated with it and it has a pointer 
+				to the next link in the chain. For each data element that you have, there is one link associated with it. Links are allocated as necessary and deallocated 
+				as necessary during runtime. It should be noted that the links in a linked list are NOT contiguously stored. The links are "scattered" about in memory.<br><br> 
 				
-				Use the naviation bar at the top to select either Data Structures, Sorting Algorithms or Misc. Algorithms.  
-				The first page/link in the dropdown menu for each of these three categories gives a general overview of the given category. The preceding pages/links in the 
-				drop down menu will each cover a unique topic for the given category (Ex. the "Bubble Sort" link of the "Sorting Algorithms" dropdown menu will cover the bubble sort 
-				algorithm).<br><br>
-
-				Click on the "About Me" link in the right side of the naviation bar to learn about who I am 
-				and how to contact me.<br><br>
 				
-				Thank you for visiting this website! Good luck and happy coding!
-			</p>
-			
+				<pre>
+// SINGLE LINKED LIST QUEUE&#10;&#10;struct link {&#10;&#9;TYPE value;&#10;&#9;struct link *next;&#10;};&#10;&#10;&#10;struct listQueue {&#10;&#9;struct link *firstLink;&#10;&#9;struct link *lastLink;&#10;};&#10;&#10;&#10;void listQueueInit(struct listQueue *q)&#10;{&#10;&#9;struct link *lnk = malloc(sizeof(struct link));&#10;&#9;assert(lnk != 0);&#10;&#9;&#10;&#9;link-&gt;next = 0;&#10;&#9;&#10;&#9;q-&gt;firstlink = q-&gt;lastLink = link;&#10;}&#10;&#10;&#10;void listQueueAddBack(struct listQueue *q, TYPE e)&#10;{&#10;&#9;struct link *lnk = malloc(sizeof(struct link));&#10;&#9;&#10;&#9;lnk-&gt;next = 0;&#10;&#9;lnk-&gt;value = e;&#10;&#9;&#10;&#9;q-&gt;lastLink-&gt;next = lnk;&#10;&#9;q-&gt;lastLink = lnk;&#10;}&#10;&#10;&#10;TYPE listQueueFront(struct listQueue *q)&#10;{&#10;&#9;assert(listQueueIsEmpty(q) != 1);&#10;&#9;&#10;&#9;return q-&gt;firstlink-&gt;next-&gt;value;&#10;}&#10;&#10;&#10;void listQueueRemoveFront(struct listQueue *q)&#10;{&#10;&#9;assert(listQueueIsEmpty(q) != 1);&#10;&#9;&#10;&#9;struct link *temp = q-&gt;firstLink-&gt;next;&#10;&#9;&#10;&#9;q-&gt;firstLink-&gt;next = temp-&gt;next;&#10;&#9;&#10;&#9;if(q-&gt;firstLink-&gt;next == 0)&#10;&#9;&#9;q-&gt;lastLink = q-&gt;firstLink;&#10;&#9;&#10;&#9;free(temp); &#10;}&#10;&#10;&#10;int listQueueIsEmpty(struct listQueue *q)&#10;{&#10;&#9;return q-&gt;firstLink == q-&gt;lastLink; &#10;}</pre>			
 		</div>
 		
 		<center>&copy Peter Moldenhauer April 19th 2017 ~ moldenhp@oregonstate.edu</center><br> 

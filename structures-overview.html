@@ -45,6 +45,9 @@
 							<li><a href="array-Stack.html">Array - Stack ADT</a></li>
 							<li><a href="dynamicArray-Bag.html">Dynamic Array - Bag ADT</a></li>
 							<li><a href="dynamicArray-Stack.html">Dynamic Array - Stack ADT</a></li>
+							<li><a href="dynamicArray-DQ.html">Dynamic Array - Queue and Deque</a></li>
+							<li><a href="slist-Stack.html">Single Linked List - Stack</a></li>
+							<li><a href="slist-Queue.html">Single Linked List - Queue</a></li>
 						</ul>
 					</li>
 					
@@ -168,12 +171,36 @@
 				The Bag ADT has many different uses and applications. One of which is a spell-checker. In this application, a Bag is used as a container to hold a dictionary of correctly 
 				spelled words. Then, each word in a given file (or word document) is then tested against the words in the Bag. If a word in the file is not found inside of the Bag, then 
 				it is flagged as a misspelled word. In short, any application that does not require "remembering" the order that elements are inserted into a container will most likely 
-				use a variation of the Bag ADT.
+				use a variation of the Bag ADT.<br><br><br>
+				
+				<b>Queue ADT:</b><br>
+				A Queue is an abstract data type that has the first-in, first-out (FIFO) property. Essentially a queue is like a line of people - people enter the line in the back and 
+				they then exit the line in the front. Therefore, the first element added to a queue is the first element that is removed from that queue. The main interface operations 
+				of a queue are as follows:
+				<ul>
+					<li>int isEmpty();</li>
+					<li>void addBack(TYPE val);</li>
+					<li>TYPE front();</li>
+					<li>void removeFront();</li>
+				</ul>
+				There are many applications for queues. Similar to the Stack ADT, a queue is also good at "remembering" - just in a different order. This is useful in searching graphs 
+				such as the BFS algorithm. Queues also show up in operating systems a lot such as to store processes that are waiting to be run on the CPU. Also, queues work well in the 
+				application of storing printing jobs that a printer may receive.<br><br><br>
+				
+				<b>Deque ADT:</b><br>
+				The deque is very similar to a queue except that with a deque, elements can be added or removed from either side. The word "deque" basically means "double ended queue". 
+				This is almost like putting the stack operations and the queue operations and then putting them together. Overall, the deque ADT is more flexible than simply the stack 
+				or queue because it allows for additions and removals from both sides.<br><br>
+
+				The deque has numerous applications that a stack or queue would not be able to pull off. One of these is a finite length undo feature in a word processing software. 
+				For example if a developer wanted to only allow for a maximum of 20 operations to be added into the "undo container" at a time, a deque would make for the best ADT 
+				to pull this off. 
+				
 			</p>
 			
 		</div>
 		
-		<center>&copy Peter Moldenhauer April 7th 2017 ~ moldenhp@oregonstate.edu</center><br> 
+		<center>&copy Peter Moldenhauer April 19th 2017 ~ moldenhp@oregonstate.edu</center><br> 
 		
 	</div>
 	

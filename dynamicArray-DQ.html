@@ -82,30 +82,25 @@
 	<!-- Main Content (below navigation bar) -->
 	<div class="container">     <!-- class=container-fluid is full screen, class=container is just a fixed width --> 
 		
-		<h1 class="title">Structures, Sorting and Such</h1>
+		<center><img src="images/underConstruction.jpg"></center><br>
+		<h1 class="title">Dynamic array implementation of the Queue and Deque ADTs</h1>
 		<!-- a well is a "floating island" that has a boarder and a grey background -->
 		<div class="well">
 			
 			<p>
-				Welcome to Structures, Sorting and Such! This is a website that I built to reinforce my understanding of various data 
-				structures, sorting algorithms and other miscellaneous algorithms. Data structures and algorithms are two critical concepts in the 
-				world of computer science. My hope is that this website will serve as a "quick reference guide" to not only myself but also others
-				who may need a quick refresher on these topics.<br><br>
-				
-				I aimed to include some of the most popular and well known data structures and algorithms in this website. I feel like 
-				the collection that I discuss in this website encompasses the common data structures and algorithms that are brought up in schoolwork, job interviews and every day programming. 
-				Of course there are still many other "lesser known" structures and alorithms that I have not included in this website that are still important to know 
-				in the world of computer science.<br><br>
-				
-				Use the naviation bar at the top to select either Data Structures, Sorting Algorithms or Misc. Algorithms.  
-				The first page/link in the dropdown menu for each of these three categories gives a general overview of the given category. The preceding pages/links in the 
-				drop down menu will each cover a unique topic for the given category (Ex. the "Bubble Sort" link of the "Sorting Algorithms" dropdown menu will cover the bubble sort 
-				algorithm).<br><br>
+				<!-- Using an array data structure to implement the Bag ADT has its pros and cons (as in when you use an array for any implemtation). One pro is that an array is the 
+				only core data structure designed to hold a collection of elements. This is compared to other data structures that are really only designed to store a single element. 
+				Another pro to using an array is that it allows for random access. So therefore, you can get to any element in constant time (Big O complexity: O(1)). However, the big down side to using an 
+				array is that it has a fixed size. There is a maximum number of elements that has to be specified when you create an array and if you want to go beyond that maximum 
+				number at run-time then you are out of luck. Furthermore, it is often the case in which you do not know how much space is needed until you are done (or until run-time).<br><br>
 
-				Click on the "About Me" link in the right side of the naviation bar to learn about who I am 
-				and how to contact me.<br><br>
+				To implement a Bag ADT using an array, lets first assume that you have the following interface (header) file named arrayBag.h. This interface file lists out all of the 
+				public functions that control how the data structure works. Below the inteface file I will show the implementation file (named arrayBag.c) that will define all of the 
+				functions in the interface file. The implementation file is what shows the actual workings of how the data structure behaves.<br><br>
 				
-				Thank you for visiting this website! Good luck and happy coding!
+				<b>arrayBag.h</b><br> -->
+				<pre>
+// DYNAMIC ARRAY DEQUE AND QUEUE &#10;&#10;struct deque{&#10;&#9;TYPE * data;&#10;&#9;int capacity;&#10;&#9;int size;&#10;&#9;int beg;&#10;};&#10;&#10;&#10;void dequeInit(struct deque *d, int capacity)&#10;{&#10;&#9;d-&gt;data = malloc(sizeof(TYPE) * capacity);&#10;&#9;&#10;&#9;d-&gt;size = 0;&#10;&#9;&#10;&#9;d-&gt;beg = 0; &#10;&#9;&#10;&#9;d-&gt;capacity = capacity;&#10;}&#10;&#10;&#10;void dequeFree(struct deque *d)&#10;{&#10;&#9;free(d-&gt;data)&#10;&#9;&#10;&#9;d-&gt;size = 0&#10;&#9;&#10;&#9;d-&gt;capacity = 0;&#10;}&#10;&#10;&#10;int dequeSize(struct deque *d)&#10;{&#10;&#9;return d-&gt;size; &#10;}&#10;&#10;&#10;void _dequeSetCapacity(struct deque *d, int newCap)&#10;{&#10;&#9;TYPE *newData = malloc(sizeof(TYPE) * newCap);&#10;&#9;&#10;&#9;int i;&#10;&#9;int j = d-&gt;beg; &#10;&#9;for (i = 0, i &lt; d-&gt;size, i++)&#10;&#9;{&#10;&#9;&#9;newData[i] = d-&gt;data[j];&#10;&#9;&#9;j = j + 1; &#10;&#9;&#9;if(j &gt;= d-&gt;capacity)&#10;&#9;&#9;&#9;j = 0; &#10;&#9;}&#10;&#9;&#10;&#9;free(d-&gt;data);&#10;&#9;&#10;&#9;d-&gt;data = newData;&#10;&#9;d-&gt;capacity = newCap;&#10;&#9;d-&gt;beg = 0; &#10;}&#10;&#10;&#10;void dequeAddFront(struct deque *d, TYPE val)&#10;{&#10;&#9;if(d-&gt;size &gt;= d-&gt;capacity)&#10;&#9;&#9;_dequeSetCapacity(d, d-&gt;capacity * 2);&#10;&#9;&#9;&#10;&#9;if(d-&gt;beg == 0)&#10;&#9;{&#10;&#9;&#9;d-&gt;beg = d-&gt;capacity - 1;&#10;&#9;}&#10;&#9;else&#10;&#9;{&#10;&#9;&#9;d-&gt;beg = d-&gt;beg - 1;&#10;&#9;}&#10;&#9;&#10;&#9;d-&gt;data[d-&gt;beg] = val;&#10;&#9;&#10;&#9;d-&gt;size++;&#10;}&#10;&#10;&#10;void dequeAddBack(struct *d, TYPE val)&#10;{&#10;&#9;if(d-&gt;size &gt;= d-&gt;capacity)&#10;&#9;&#9;_dequeSetCapacity(d, d-&gt;capacity * 2);&#10;&#9;&#9;&#10;&#9;d-&gt;data[(d-&gt;beg + d-&gt;size) % d-&gt;capacity] = val;&#10;&#9;&#10;&#9;d-&gt;size++;&#10;}&#10;&#10;&#10;TYPE dequeFront(struct deque *d)&#10;{&#10;&#9;return d-&gt;data[d-&gt;beg];&#10;}&#10;&#10;&#10;TYPE dequeBack(struct deque *d)&#10;{&#10;&#9;return d-&gt;data[(d-&gt;beg + d-&gt;size - 1) % d-&gt;capacity];&#10;}&#10;&#10;&#10;void dequeRemoveFront(struct deque *d)&#10;{&#10;&#9;assert(d-&gt;size &gt; 0);&#10;&#9;&#10;&#9;d-&gt;beg = (d-&gt;beg +1) % d-&gt;capacity;&#10;&#9;&#10;&#9;d-&gt;size--; &#10;}&#10;&#10;&#10;void dequeRemoveBack(struct deque *d)&#10;{&#10;&#9;assert(d-&gt;size &gt; 0);&#10;&#9;&#10;&#9;d-&gt;size--; &#10;}&#10;</pre>
 			</p>
 			
 		</div>
