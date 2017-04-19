@@ -80,42 +80,93 @@
 	<!-- Main Content (below navigation bar) -->
 	<div class="container">     <!-- class=container-fluid is full screen, class=container is just a fixed width --> 
 		
-		<h1 class="title">About Me</h1>
+		<h1 class="title">Overview of Sorting Algorithms</h1>
 		<!-- a well is a "floating island" that has a boarder and a grey background -->
 		<div class="well">
 			
 			<p>
-				<img class="roundPic" src="images/peterPic.jpg"><br>
+				<b>Big O Notation:</b><br>
+				A sorting algorithm is an algorithm (sequence of steps) that puts elements of a list in a certain order. The most commonly used ordering is 
+				numerical order. While there are many different types of sorting algorithms that can each be used to sort the same set of data, the efficiency and 
+				complexity of how these algorithms go about sorting the data may all be different. The efficiency of a sorting algorithm (or any algorithm in general) is measured by its "big O 
+				notation". Big O notation refers to how an algorithm's running time or space requirements grow as the input size grows. In short, big O notation 
+				characterizes functions according to their growth rates: different functions with the same growth rate may be represented using the same O notation. 
+				A list of the different big O notations (complexities) can be seen below with the most costly (least efficient) at the top of the list and the least 
+				costly (most efficient) at the bottom of the list:
+				<ul>
+					<li>N! &rarr; Factorial</li>
+					<li>2<sup>n</sup> &rarr; Exponential</li>
+					<li>N<sup>d</sup>, d > 3 &rarr; Polynomial</li>
+					<li>N<sup>3</sup> &rarr; Cubic</li>
+					<li>N<sup>2</sup> &rarr; Quadratic</li>
+					<li>N sqrt n</li>
+					<li>N log n</li>
+					<li>N &rarr; Linear</li>
+					<li>sqrt (n) &rarr; Root-n</li>
+					<li>Log n &rarr; Logarithmic</li>
+					<li>1 &rarr; Constant</li>
+				</ul>
+				When I show the implementation of a given algorithm or data structure, I will also describe its bit O notation. I will refer to this list (above) so that 
+				you can see where a given complexity falls in this "efficiency list".<br><br>
 				
-				Hello! My name is Peter Moldenhauer. As of March 2016 I decided to change career paths from the field of law enforcement/corrections into 
-				the field of technology. The process of going back to school and diving into a new career field has been challenging yet rewarding. I could 
-				not be happier with my decision to embark on this new journey and I am excited to see where this new path will take me. <br><br>
+				It should be noted that with sorting algorithms in particular, the space requirements play a factor in the complexity of the algorithm. Some 
+				sorting algorithms (slection, bubble, heapsort) work by moving elements to their final position, one at a time using only the space required for the initial 
+				array of data. For example, to sort an array of size N, first put 1 item in the proper place and then continue sorting the remaining items with the array of 
+				size N-1 at each step. These sorting algorithms do not use up an additional space compared to some other sorting algorithms (insertion, quicksort, counting, 
+				radix) that put items into a temporary position, each time closer to their final proper ordering. Each time you rescan the elements, you move the elements 
+				closer to the final position with each iteration. <br><br><br>
 				
-				In 2008 I received my first bachelor's degree in criminal justice from the University of Wisconsin-Parkside. Upon graduating, I gained work 
-				experience as a police reserve officer, paid-on-call firefighter, youth care worker and as a state correctional officer. <br><br>
-				
-				In late 2014 I made the decision to resign my employment as a state correctional officer sot aht my wife and I could travel the country and to 
-				also give me the opportunity to seek out a new career path to take. Over the following two years, my wife and I moved from Wisconsin to North Carolina 
-				to Texas to Arizona to Illinois and now back to Texas.<br><br>
+				<b>Common Sorting Algorithms:</b><br>
+				Below is a table that lists out some of the most common sorting algorithms along with their best, average and worst case time complexities.<br><br>
+				<table border="1">
+				<tr>
+					<th> Name </th>
+					<th> Best Case </th>
+					<th> Average Case </th>
+					<th> Worst Case </th>
+				</tr>  
+				<tr>
+					<td>Quicksort</td>
+					<td>n log n</td>
+					<td>n log n</td>
+					<td>n<sup>2</sup></td>
+				</tr>
+				<tr>
+					<td>Mergesort</td>
+					<td>n log n</td>
+					<td>n log n</td>
+					<td>n log n</td>
+				</tr>
+				<tr>
+					<td>Heapsort</td>
+					<td>n log n</td>
+					<td>n log n</td>
+					<td>n log n</td>
+				</tr>
+				<tr>
+					<td>Insertion Sort</td>
+					<td>n</td>
+					<td>n<sup>2</sup></td>
+					<td>n<sup>2</sup></td>
+				</tr>
+				<tr>
+					<td>Selection Sort</td>
+					<td>n<sup>2</sup></td>
+					<td>n<sup>2</sup></td>
+					<td>n<sup>2</sup></td>
+				</tr>
+				<tr>
+					<td>Bubble Sort</td>
+					<td>n</td>
+					<td>n<sup>2</sup></td>
+					<td>n<sup>2</sup></td>
+				</tr>
+				</table>
 
-				Throughout this journey I discovered how fascinating the field of technology is and in early 2016 I decided to make the jump to go back to school for 
-				my second bachelor's degree - this time in computer science through Oregon State University.<br><br>
-				
-				When I am not working on schoolwork, I spend my free time exploring new programming languages and learning about many of the other areas that make 
-				up the vast field of computer science. My motivation for building this website was that I wanted to look at two areas in particular - data structures and 
-				algorithms, and get a deeper understanding of these crucial building blocks of computer science.<br><br>
-				
-				I hope to continually update this website with more data structures and algorithms as my knowlege in these topics grows...so check back in here at Structures, 
-				Sorting and Such to stay refreshed in these core computer science concepts!<br><br>
-				
-				Facebook: <a href="https://www.facebook.com/pete.moldenhauer">www.facebook.com/pete.moldenhauer</a><br>
-				LinkedIn: <a href="https://www.linkedin.com/in/peter-moldenhauer">www.linkedin.com/in/peter-moldenhauer</a><br>
-				GitHub: <a href="https://github.com/Peter-Moldenhauer">www.github.com/Peter-Moldenhauer</a><br>
-				Email: moldenhp@oregonstate.edu
 			</p>
 			
-		</div> 
-		 
+		</div>
+		
 		<center>&copy Peter Moldenhauer April 7th 2017 ~ moldenhp@oregonstate.edu</center><br> 
 		
 	</div>

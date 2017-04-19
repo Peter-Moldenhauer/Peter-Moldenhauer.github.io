@@ -41,15 +41,15 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures <span class="caret"></span></a>  <!-- this is the "link" with a down arrow the user can click on to see the other menu items in the dropdown list -->
 						<ul class="dropdown-menu"> <!-- dropdown menu items --> 
 							<li><a href="structures-overview.html">Overview of Data Structures</a></li>
-							<li><a href="#">Stack - Dynamic Array</a></li>
-							<li><a href="#">Queue - Linked List</a></li>
+							<li><a href="array-Bag.html">Array - Bag ADT</a></li>
+							<li><a href="array-Stack.html">Array - Stack ADT</a></li>
 						</ul>
 					</li>
 					
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sorting Algorithms <span class="caret"></span></a>  <!-- this is the "link" with a down arrow the user can click on to see the other menu items in the dropdown list -->
 						<ul class="dropdown-menu"> <!-- dropdown menu items --> 
-							<li><a href="#">Overview of Sorting Algorithms</a></li>
+							<li><a href="sorting-overview.html">Overview of Sorting Algorithms</a></li>
 							<li><a href="#">Bubble Sort</a></li>
 							<li><a href="#">Merge Sort</a></li>
 						</ul>
@@ -58,7 +58,7 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Misc. Algorithms <span class="caret"></span></a>  <!-- this is the "link" with a down arrow the user can click on to see the other menu items in the dropdown list -->
 						<ul class="dropdown-menu"> <!-- dropdown menu items --> 
-							<li><a href="#">Overview of other algorithms</a></li>
+							<li><a href="misc-overview.html">Overview of misc. algorithms</a></li>
 							<li><a href="#">Binary Search</a></li>
 							<li><a href="#">Page Rank Algorithm</a></li>
 							<li><a href="#">Euclid's Algorithm</a></li>
@@ -80,30 +80,103 @@
 	<!-- Main Content (below navigation bar) -->
 	<div class="container">     <!-- class=container-fluid is full screen, class=container is just a fixed width --> 
 		
-		<h1 class="title">Structures, Sorting and Searching</h1>
+		<!-- <center><img src="images/underConstruction.jpg"></center><br> -->
+		<h1 class="title">Array implementation of the Stack (ADT)</h1>
 		<!-- a well is a "floating island" that has a boarder and a grey background -->
 		<div class="well">
 			
 			<p>
-				Welcome to Structures, Sorting and Searching! This is a website that I built to reinforce my understanding of various data 
-				structures, sorting algorithms and serching algorithms. Data structures and algorithms are two critacal concepts in the 
-				world of computer science. My hope is that this website will serve as a "quick reference guide" to not only myself but also others
-				who may need a quick refresher on these topics.<br><br>
-				
-				I aimed to include the most popular and well known data structures, sorting algorithms and searching algorithms in this website. I feel like 
-				this collection is most applicable to those structures and algorithms that are brought up in schoolwork, job interviews and every day programming. 
-				Of course there are still many other "lesser known" structures and alorithms that I have not included in this website that are still important to know 
-				in the world of computer science.<br><br>
-				
-				Use the naviation bar at the top to select either "Structures" (data structures), "Sorting" (sorting algorithms) or "Searching" (search algorithms). 
-				The first page/link in the dropdown menu for each of these three categories gives a general overview of the given category. The preceding pages/links in the 
-				drop down menu will each cover a unique topic for the given category (Ex. the "Bubble Sort" link of the "Sorting" dropdown menu will cover the bubble sort 
-				algorithm).<br><br>
+				Using an array data structure to implement the Stack ADT has its pros and cons (as in when you use an array for any implemtation). One pro is that an array is the 
+				only core data structure designed to hold a collection of elements. This is compared to other data structures that are really only designed to store a single element. 
+				Another pro to using an array is that it allows for random access. So therefore, you can get to any element in constant time (Big O complexity: O(1)). However, the big down side to using an 
+				array is that it has a fixed size. There is a maximum number of elements that has to be specified when you create an array and if you want to go beyond that maximum 
+				number at run-time then you are out of luck. Furthermore, it is often the case in which you do not know how much space is needed until you are done (or until run-time).<br><br>
 
-				Click on the "About Me" link in the right side of the naviation bar to learn about who I am 
-				and how to contact me.<br><br>
+				To implement a Stack ADT using an array, lets first assume that you have the following interface (header) file named arrayStack.h. This interface file lists out all of the 
+				public functions that control how the data structure works. Below the inteface file I will show the implementation file (named arrayStack.c) that will define all of the 
+				functions in the interface file. The implementation file is what shows the actual workings of how the data structure behaves.<br><br>
 				
-				Good luck and happy coding!
+				<b>arrayStack.h</b><br>
+				<pre>
+# ifndef ArrayStack
+# define ArrayStack
+
+# define TYPE int 
+
+struct arrayStack {
+	TYPE data [100];
+	int count;
+};
+
+void initArray(struct arrayStack * s);
+void addArray(struct arrayStack * s, TYPE v);
+void pushArray(struct arrayStack * s, TYPE v);
+TYPE topArray(struct arrayStack * s);
+void popArray(struct arrayStack * s); 
+int isEmptyArray(struct arrayStack * s);
+
+# endif</pre><br>
+
+			<b>arrayStack.c</b><br>
+			<pre>
+#include "arrayStack.h"
+#include <assert.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+struct arrayStack {
+	TYPE data [100];
+	int count;
+};
+
+// This function allocates space for an arrayBag structure 
+struct arrayStack * createArray() {
+	struct arrayStack * s = malloc(sizeof(struct arrayStack));
+	return s;
+}		
+
+// This function initializes the starting size of the array to 0
+void initArray (struct arrayStack * s) {
+	s->count = 0; 
+}	
+
+// This function adds an element to the array and then increments the count of elements in the array
+void addArray(struct arrayStack *s, TYPE v) {
+	s->data[s->count] = v;
+	s->count++;
+}
+
+// This function pushes a given value on top of the Stack 
+void pushArray(struct arrayStack * s, TYPE v) {
+	addArray(s, v);
+}
+
+// This function returns the value that is currently at the top of the Stack
+TYPE topArray(struct arrayStack * s) {
+	assert(!isEmptyArray(s));
+	return s->data[s->count-1];
+}
+
+// This function pops (removes) the top value off of the Stack
+void popArray(struct arrayStack * s) {
+	assert(!isEmptyArray(s));
+	b->count--;
+}
+
+// This function returns 1 (true) if the Stack is empty or 0 (false) if not empty
+int isEmptyArray(struct arrayStack * s) {
+	if(s->count == 0)
+		return 1;
+	else
+		return 0;
+}
+
+// This function prints out all of the values that are in the Stack
+void printArray(struct arrayStack * s) {
+	int i;
+	for(i=0; i<100; i++)
+		printf("Array[i] = %d\n", s->data[i]); 
+}</pre>
 			</p>
 			
 		</div>

@@ -41,15 +41,15 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures <span class="caret"></span></a>  <!-- this is the "link" with a down arrow the user can click on to see the other menu items in the dropdown list -->
 						<ul class="dropdown-menu"> <!-- dropdown menu items --> 
 							<li><a href="structures-overview.html">Overview of Data Structures</a></li>
-							<li><a href="#">Stack - Dynamic Array</a></li>
-							<li><a href="#">Queue - Linked List</a></li>
+							<li><a href="array-Bag.html">Array - Bag ADT</a></li>
+							<li><a href="array-Stack.html">Array - Stack ADT</a></li>
 						</ul>
 					</li>
 					
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sorting Algorithms <span class="caret"></span></a>  <!-- this is the "link" with a down arrow the user can click on to see the other menu items in the dropdown list -->
 						<ul class="dropdown-menu"> <!-- dropdown menu items --> 
-							<li><a href="#">Overview of Sorting Algorithms</a></li>
+							<li><a href="sorting-overview.html">Overview of Sorting Algorithms</a></li>
 							<li><a href="#">Bubble Sort</a></li>
 							<li><a href="#">Merge Sort</a></li>
 						</ul>
@@ -58,7 +58,7 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Misc. Algorithms <span class="caret"></span></a>  <!-- this is the "link" with a down arrow the user can click on to see the other menu items in the dropdown list -->
 						<ul class="dropdown-menu"> <!-- dropdown menu items --> 
-							<li><a href="#">Overview of other algorithms</a></li>
+							<li><a href="misc-overview.html">Overview of misc. algorithms</a></li>
 							<li><a href="#">Binary Search</a></li>
 							<li><a href="#">Page Rank Algorithm</a></li>
 							<li><a href="#">Euclid's Algorithm</a></li>
@@ -86,10 +86,10 @@
 			
 			<p>
 				<b>Data Structure vs. Abstract Data Type (ADT):</b><br>
-				The study of data structures is concerned largely with the need to maintain collections of values. These are sometimes termed <i>containers</i>. 
-				(Budd, Timothy. "An Active Learning approach to Data Structures using C") Over the years computer programmers have identified a few different ways 
-				of organizing collections of data. These collections of data (i.e. "containers") are the core cocepts involved in the study of data structures. There 
-				are numerous different types of these containers, each with their own different purposes and behaviors. These containers are commonly called "abstract 
+				"The study of data structures is concerned largely with the need to maintain collections of values. These are sometimes termed <i>containers</i>." 
+				<a href="http://classes.engr.oregonstate.edu/eecs/fall2009/cs261/Textbook/Title.pdf">(source)</a> Over the years, computer programmers have identified a few different ways 
+				of organizing collections of data. These collections of data are the core cocepts involved in the study of data structures. There 
+				are numerous different types of these collections (or also called "containers"), each of which have their own different purposes and behaviors. These containers are commonly called "abstract 
 				data types" (ADTs). In this website I will cover the implementation of the following abstract data types: 
 				<ul>
 					<li>Stack</li>
@@ -105,11 +105,12 @@
 				algorithms that manipulates data in certain ways. In other words, an abstract data type is of the logical level and a data strucutre is of the 
 				implementation level. For example, some of the common abstract data types are: stack, bag and queue. Some common data structures are dynamic arrays and 
 				linked lists. A stack ADT can be implemented with a dynamic array or a linked list, similar to how a queue ADT can be implemented with a dynamic array or 
-				a linked list as well. To put it more simply, an ADT can have many implementations using several different data structures. <br><br>
+				a linked list as well. To put it more simply, an ADT can have many implementations using several different data structures. <br><br><br>
 				
 				<b>Three levels of Abstraction:</b><br>
 				Wikipedia describes the term "abstraction" as "the process or result of generalization by reducing the information content of a concept to retain only 
-				information which is relevant for a particular purpose." Relating this to data structures, there are three main levels of abstraction (abstract data types) in the study of data structures 
+				information which is relevant for a particular purpose."<a href="https://en.wikipedia.org/wiki/Abstraction_(software_engineering)">(source)</a> 
+				Relating this to data structures, there are three main levels of abstraction (abstract data types) in the study of data structures 
 				that I should point out:
 				<ul>
 					<li>Interface: Describes the properties and behaviors of a collection of data - what does a specific abstract data type do?</li>
@@ -117,10 +118,10 @@
 					<li>Implementation: Looks at specific implementations of certain abstract data types in a particular language - how to code a spcific abstract data type.</li>
 				</ul>
 				It should be noted that the first two levels of abstraction listed above are completely independent of any particular language. On this webpage (below) I will 
-				describe these first two levels of abstraction for various abstract data types to give an idea of how and why they are used. Then, on each of the remaining links 
+				describe these first two levels of abstraction for each of the abstract data types to give an idea of how and why they are used. Then, on each of the remaining links 
 				in the dropdown menu I will describe how to code a given abstract data type using a spcific data structure and a specific language to code the data structure in. 
 				I will primarilly use the C programming language to implement the abstract data types but I may also include code from some other languages periodically 
-				to compare differences in the implementations.<br><br>
+				to compare differences in the implementations.<br><br><br>
 				
 				<b>Stack ADT:</b><br>
 				The Stack abstract data type is a <i>linear</i> collection. This means that the order that the elements are placed into is important. The specific order 
@@ -138,8 +139,37 @@
 					<li>bool isEmptyStack();</li>
 				</ul>
 				There are many different uses and applications for a Stack ADT. A Stack is really good at "remembering" things, so one application for a stack would be to 
-				check for balanced parenthesis. <br><br>
+				process a mathmatical expression as a sring to check for balanced parenthesis. For example:
+				<ul style="list-style:none;">
+					<li>(2+3)) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// parens. are not balanced</li>
+					<li>(2-3( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// parens. are not balanced</li>
+					<li>((5+6*2) &nbsp;&nbsp;&nbsp;&nbsp;// parens. are balanced</li>
+				</ul>
+				A stack can solve this problem because it can go through the string one character at a time and each time an opening paren. is encountered, it is pushed 
+				onto the Stack so that it is "remembered". Whenever operators or numbers are encountered then they are just ignored. Also, whenever you encounter a closing 
+				paren. then the top of the Stack is popped off. If at the end of processing the string, there are still open parens. on the Stack then this means that the 
+				expression did not have properly balanced parenthesis. Similarly, as the string is being processed, if the Stack should be popped (because a closeing paren. is 
+				encountered) but the Stack is currently empty, then this also means that the expression is not properly balanced.<br><br>
+				Some other appplications for a Stack may include: the back and forward buttons in a web browser, evaluating mathmatical postfix expressions, solving the "Towers 
+				of Hanoi" problem, reversing the order of a word, the "undo" feature in text editors (they keep all text changes in a stack) and also buidling an activation 
+				record when solving recursive functions.<br><br><br>
 				
+				<b>Bag ADT:</b><br>
+				The Bag is the most basic of the abstract data types. The Bag is used in applications where you essentially need to maintain an unordered collection of elements. 
+				So you don't care about the order of the elements when 
+				they come in, you don't care about the order when they come out and you also don't care about the order that the elements are in when they are inside of the Bag. 
+				There is no need to know how elements are organized inside of a Bag so therefore there are just three basic interface functions:
+				<ul>
+					<li>add(val);</li>
+					<li>bool contains(val);</li>
+					<li>remove(val);</li>
+				</ul>
+				With these three interface functions, you can add elements into the Bag, you can determine if there are elements are in the Bag already and you can remove elements from 
+				the Bag.<br><br>
+				The Bag ADT has many different uses and applications. One of which is a spell-checker. In this application, a Bag is used as a container to hold a dictionary of correctly 
+				spelled words. Then, each word in a given file (or word document) is then tested against the words in the Bag. If a word in the file is not found inside of the Bag, then 
+				it is flagged as a misspelled word. In short, any application that does not require "remembering" the order that elements are inserted into a container will most likely 
+				use a variation of the Bag ADT.
 			</p>
 			
 		</div>

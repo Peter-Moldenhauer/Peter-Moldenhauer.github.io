@@ -23,3 +23,11 @@ body {
 	float: left;
 	margin: 15px 15px 0 0;
 }
+
+th {
+	padding: 10px;
+}
+
+td {
+	padding: 5px;
+}
