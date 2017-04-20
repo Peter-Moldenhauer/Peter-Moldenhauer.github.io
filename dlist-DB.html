@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Structures, Sorting and Such</title>
+    <!-- code below used for bootstrap -->
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  <!-- viewport is the users screen, and the 2 settings used here is the width of screen of device and initial scale means don't zoom in or out just 100% -->
+    
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  <!-- standard jquery library --> 
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	
+	<!-- code above used for bootstrap --> 
+	<link rel ="stylesheet" href = "style.css" type = "text/css">
+</head>
+<body>
+
+	<!-- navigation bar in bootstrap --> 
+	
+	<nav class="navbar navbar-inverse">  <!-- navbar-default is the styling of the navbar --> 
+		<div class="container-fluid">
+		
+			<!-- Logo Below --> 
+			<div class="navbar-header"> <!-- this lets bootstrap know that this isnt an actual button but just a logo --> 
+				<a href="index.html" class="navbar-brand">Home</a>  <!-- you could link this to the homepage but the # is used for a dead link --> 
+			</div>
+			
+			<!-- Menu Items Below -->
+			<div>
+				<ul class="nav navbar-nav">
+					
+					<!-- Drop down menu, this will be in the list at top but itself will contain another list -->
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures <span class="caret"></span></a>  <!-- this is the "link" with a down arrow the user can click on to see the other menu items in the dropdown list -->
+						<ul class="dropdown-menu"> <!-- dropdown menu items --> 
+							<li><a href="structures-overview.html">Overview of Data Structures</a></li>
+							<li><a href="array-Bag.html">Array - Bag ADT</a></li>
+							<li><a href="array-Stack.html">Array - Stack ADT</a></li>
+							<li><a href="dynamicArray-Bag.html">Dynamic Array - Bag ADT</a></li>
+							<li><a href="dynamicArray-Stack.html">Dynamic Array - Stack ADT</a></li>
+							<li><a href="dynamicArray-DQ.html">Dynamic Array - Queue and Deque</a></li>
+							<li><a href="slist-Stack.html">Single Linked List - Stack</a></li>
+							<li><a href="slist-Queue.html">Single Linked List - Queue</a></li>
+							<li><a href="dlist-DB.html">Double Linked List - Deque and Bag</a></li>
+							<li><a href="clist-Deque.html">Circular Linked List - Deque</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sorting Algorithms <span class="caret"></span></a>  <!-- this is the "link" with a down arrow the user can click on to see the other menu items in the dropdown list -->
+						<ul class="dropdown-menu"> <!-- dropdown menu items --> 
+							<li><a href="sorting-overview.html">Overview of Sorting Algorithms</a></li>
+							<li><a href="bubbleSort.html">Bubble Sort</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Misc. Algorithms <span class="caret"></span></a>  <!-- this is the "link" with a down arrow the user can click on to see the other menu items in the dropdown list -->
+						<ul class="dropdown-menu"> <!-- dropdown menu items --> 
+							<li><a href="misc-overview.html">Overview of misc. algorithms</a></li>
+							<li><a href="binarySearch.html">Binary Search</a></li>
+							<li><a href="pageRank.html">PageRank</a></li>
+						</ul>
+					</li>
+					
+				</ul>
+				
+				<!-- right align menu items -->
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="aboutMe.html">About Me</a></li>
+				</ul>
+				
+			</div>
+		
+		</div>
+	</nav>
+	
+	<!-- Main Content (below navigation bar) -->
+	<div class="container">     <!-- class=container-fluid is full screen, class=container is just a fixed width --> 
+		
+		<center><img src="images/underConstruction.jpg"></center><br>
+		<h1 class="title">Double Linked List implementation of the Queue and Bag ADTs</h1>
+		<!-- a well is a "floating island" that has a boarder and a grey background -->
+		<div class="well">
+			
+			<p>
+				<b>linkedList.h</b><br>				
+				<pre>
+#ifndef LINKED_LIST_H&#10;#define LINKED_LIST_H&#10;&#10;#ifndef TYPE&#10;#define TYPE int&#10;#endif&#10;&#10;#ifndef LT&#10;#define LT(A, B) ((A) &lt; (B))&#10;#endif&#10;&#10;#ifndef EQ&#10;#define EQ(A, B) ((A) == (B))&#10;#endif&#10;&#10;struct LinkedList;&#10;&#10;struct LinkedList* linkedListCreate();&#10;void linkedListDestroy(struct LinkedList* list);&#10;void linkedListPrint(struct LinkedList* list);&#10;&#10;// Deque interface&#10;&#10;int linkedListIsEmpty(struct LinkedList* list);&#10;void linkedListAddFront(struct LinkedList* list, TYPE value);&#10;void linkedListAddBack(struct LinkedList* list, TYPE value);&#10;TYPE linkedListFront(struct LinkedList* list);&#10;TYPE linkedListBack(struct LinkedList* list);&#10;void linkedListRemoveFront(struct LinkedList* list);&#10;void linkedListRemoveBack(struct LinkedList* list);&#10;&#10;// Bag interface&#10;&#10;void linkedListAdd(struct LinkedList* list, TYPE value);&#10;int linkedListContains(struct LinkedList* list, TYPE value);&#10;void linkedListRemove(struct LinkedList* list, TYPE value);&#10;&#10;#endif</pre>
+		
+				<b>linkedList.c</b><br>
+				<pre>
+#include &#34;linkedList.h&#34;&#10;#include &lt;assert.h&gt;&#10;#include &lt;stdlib.h&gt;&#10;#include &lt;stdio.h&gt;&#10;&#10;// Double link&#10;struct Link&#10;{&#10;&#9;TYPE value;&#10;&#9;struct Link* next;&#10;&#9;struct Link* prev;&#10;};&#10;&#10;// Double linked list with front and back sentinels&#10;struct LinkedList&#10;{&#10;&#9;int size;&#10;&#9;struct Link* frontSentinel;&#10;&#9;struct Link* backSentinel;&#10;};&#10;&#10;/**&#10; * Allocates the list's sentinel and sets the size to 0.&#10; * The sentinels' next and prev should point to eachother or NULL&#10; * as appropriate.&#10; */&#10;static void init(struct LinkedList* list) {&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert list is not null&#10;&#9;assert(list != NULL);&#10;&#10;&#9;// create front sentinel node&#10;&#9;list-&gt;frontSentinel = malloc(sizeof(struct Link));&#10;&#9;assert(list-&gt;frontSentinel != NULL);&#10;&#10;&#9;// create back sentinel node&#10;&#9;list-&gt;backSentinel = malloc(sizeof(struct Link));&#10;&#9;assert(list-&gt;backSentinel != NULL);&#10;&#10;&#9;// set front sentinel previous to NULL and next to back sentinel&#10;&#9;list-&gt;frontSentinel-&gt;prev = NULL;&#10;&#9;list-&gt;frontSentinel-&gt;next = list-&gt;backSentinel;&#10;&#10;&#9;// set back sentinel previous to front sentinel and next to nULL&#10;&#9;list-&gt;backSentinel-&gt;prev = list-&gt;frontSentinel;&#10;&#9;list-&gt;backSentinel-&gt;next = NULL;&#10;&#10;&#9;// initialize size to 0&#10;&#9;list-&gt;size = 0;&#10;}&#10;&#10;/**&#10; * Adds a new link with the given value before the given link and&#10; * increments the list's size.&#10; */&#10;static void addLinkBefore(struct LinkedList* list, struct Link* link, TYPE value)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list and link are not NULL&#10;&#9;assert(list != NULL);&#10;&#9;assert(link != NULL);&#10;&#10;&#9;// allocate a new node&#10;&#9;struct Link *newLink = (struct Link *)malloc(sizeof(struct Link));&#10;&#9;assert(newLink != NULL);&#10;&#10;&#9;// fill new node's value with parameter v&#10;&#9;newLink-&gt;value = value;&#10;&#10;&#9;// set the new node's previous to the provided before link's previous&#10;&#9;newLink-&gt;prev = link-&gt;prev;&#10;&#10;&#9;// set the new node's next to point to the provided before link&#10;&#9;newLink-&gt;next = link;&#10;&#10;&#9;// update the node before the inserted link to point to the new link&#10;&#9;link-&gt;prev-&gt;next = newLink;&#10;&#10;&#9;// set previous of provided before link to now point towards the new node (point back)&#10;&#9;link-&gt;prev = newLink;&#10;&#10;&#9;// update size of the linked list&#10;&#9;list-&gt;size++;&#10;&#9;assert(list-&gt;size != 0);&#10;}&#10;&#10;/**&#10; * Removes the given link from the list and&#10; * decrements the list's size.&#10; */&#10;static void removeLink(struct LinkedList* list, struct Link* link)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list and link are not equal to NULL&#10;&#9;assert(list != NULL);&#10;&#9;assert(link != NULL);&#10;&#10;&#9;// make sure the link behind next points to the correct link&#10;&#9;link-&gt;prev-&gt;next = link-&gt;next;&#10;&#10;&#9;// make sure the link before previous points to the correct link&#10;&#9;link-&gt;next-&gt;prev = link-&gt;prev;&#10;&#10;&#9;// now that its &#34;unlinked&#34;&#10;&#9;free(link);&#10;&#10;&#9;// update the size&#10;&#9;list-&gt;size--;&#10;}&#10;&#10;/**&#10; * Allocates and initializes a list.&#10; */&#10;struct LinkedList* linkedListCreate()&#10;{&#10;&#9;struct LinkedList* newDeque = malloc(sizeof(struct LinkedList));&#10;&#9;init(newDeque);&#10;&#9;return newDeque;&#10;}&#10;&#10;/**&#10; * Deallocates every link in the list including the sentinels,&#10; * and frees the list itself.&#10; */&#10;void linkedListDestroy(struct LinkedList* list)&#10;{&#10;&#9;while (!linkedListIsEmpty(list))&#10;&#9;{&#10;&#9;&#9;linkedListRemoveFront(list);&#10;&#9;}&#10;&#9;free(list-&gt;frontSentinel);&#10;&#9;free(list-&gt;backSentinel);&#10;&#9;free(list);&#10;}&#10;&#10;/**&#10; * Adds a new link with the given value to the front of the deque.&#10; */&#10;void linkedListAddFront(struct LinkedList* list, TYPE value)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;&#9;// adds to front of the list by adding a link next to the front sentinel&#10;&#9;addLinkBefore(list, list-&gt;frontSentinel-&gt;next, value);&#10;}&#10;&#10;/**&#10; * Adds a new link with the given value to the back of the deque.&#10; */&#10;void linkedListAddBack(struct LinkedList* list, TYPE value)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;&#9;// adds to back of the list by adding a link before the back sentinel&#10;&#9;addLinkBefore(list, list-&gt;backSentinel, value);&#10;}&#10;&#10;/**&#10; * Returns the value of the link at the front of the deque.&#10; */&#10;TYPE linkedListFront(struct LinkedList* list)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;    // assert that list is not NULL&#10;    assert(list != NULL);&#10;&#10;    // assert that the list is not empty&#10;    assert(linkedListIsEmpty(list) != 1);&#10;&#10;    return list-&gt;frontSentinel-&gt;next-&gt;value;&#10;}&#10;&#10;/**&#10; * Returns the value of the link at the back of the deque.&#10; */&#10;TYPE linkedListBack(struct LinkedList* list)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;    assert(list != NULL);&#10;&#10;    // assert that the list is not empty&#10;    assert(linkedListIsEmpty(list) != 1);&#10;&#10;    return list-&gt;backSentinel-&gt;prev-&gt;value;&#10;}&#10;&#10;/**&#10; * Removes the link at the front of the deque.&#10; */&#10;void linkedListRemoveFront(struct LinkedList* list)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;    // assert that the list is not empty&#10;    assert(linkedListIsEmpty(list) != 1);&#10;&#10;    // remove the link next to the front sentinel&#10;    removeLink(list, list-&gt;frontSentinel-&gt;next);&#10;}&#10;&#10;/**&#10; * Removes the link at the back of the deque.&#10; */&#10;void linkedListRemoveBack(struct LinkedList* list)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;    // assert that the list is not empty&#10;    assert(linkedListIsEmpty(list) != 1);&#10;&#10;    // remove the link next to the front sentinel&#10;    removeLink(list, list-&gt;backSentinel-&gt;prev);&#10;}&#10;&#10;/**&#10; * Returns 1 if the deque is empty and 0 otherwise.&#10; */&#10;int linkedListIsEmpty(struct LinkedList* list)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;&#9;// return 0 if list is not empty and 1 if list is empty&#10;&#9;if (list-&gt;size &gt; 0)&#10;        return 0;&#10;    else&#10;        return 1;&#10;}&#10;&#10;/**&#10; * Prints the values of the links in the deque from front to back.&#10; */&#10;void linkedListPrint(struct LinkedList* list)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;&#9;struct Link *currentLink;&#10;&#10;&#9;currentLink = list-&gt;frontSentinel-&gt;next;&#10;&#10;&#9;// loop through all of the links&#10;&#9;while(currentLink != list-&gt;backSentinel){&#10;        printf(&#34;%d &#34;, currentLink-&gt;value);&#10;        currentLink = currentLink-&gt;next;&#10;&#9;}&#10;&#9;printf(&#34;\n&#34;);&#10;}&#10;&#10;/**&#10; * Adds a link with the given value to the bag.&#10; */&#10;void linkedListAdd(struct LinkedList* list, TYPE value)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;    // since this is a bag it does not matter where to add the link, just add to the front&#10;    linkedListAddFront(list, value);&#10;}&#10;&#10;/**&#10; * Returns 1 if a link with the value is in the bag and 0 otherwise.&#10; */&#10;int linkedListContains(struct LinkedList* list, TYPE value)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != 0);&#10;&#10;&#9;// assert that the list is not empty&#10;&#9;assert(linkedListIsEmpty(list) != 1);&#10;&#10;&#9;// create a pointer for iterating&#10;&#9;struct Link *currentLink;&#10;&#10;&#9;// initialize new pointer to the first link in the list&#10;&#9;currentLink = list-&gt;frontSentinel-&gt;next;&#10;&#10;&#9;// loop while the current link has not reached the end of the linked list&#10;&#9;while(currentLink != list-&gt;backSentinel){&#10;        // check if the value of that link is the value we are searching for&#10;        if(currentLink-&gt;value == value){&#10;            // if value is in this link then return 1&#10;            return 1;&#10;        }&#10;        // update the current link to loop though the next link's value&#10;        currentLink = currentLink-&gt;next;&#10;&#9;}&#10;&#10;&#9;// if value was not found in the linked list then return 0&#10;&#9;return 0;&#10;}&#10;&#10;/**&#10; * Removes the first occurrence of a link with the given value.&#10; */&#10;void linkedListRemove(struct LinkedList* list, TYPE value)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;&#9;// assert that the list is not empty&#10;&#9;assert(linkedListIsEmpty(list) != 1);&#10;&#10;&#9;// create a pointer for iterating&#10;&#9;struct Link *currentLink;&#10;&#10;&#9;// initialize new pointer to the first link in the list&#10;&#9;currentLink = list-&gt;frontSentinel-&gt;next;&#10;&#10;&#9;// loop through the entire list to find and remove the specified value&#10;&#9;while(currentLink != list-&gt;backSentinel){&#10;        // if the value is found that you want to remove...&#10;        if(currentLink-&gt;value == value){&#10;            // remove link&#10;            removeLink(list, currentLink);&#10;            // break the loop so we only remove one instance of it&#10;            break;&#10;        }&#10;        // update the current link to check the next link in the list&#10;        currentLink = currentLink-&gt;next;&#10;&#9;}&#10;}</pre>				
+				
+			</p>
+		</div>
+		
+		<center>&copy Peter Moldenhauer April 19th 2017 ~ moldenhp@oregonstate.edu</center><br> 
+		
+	</div>
+	
+</body>
+</html>

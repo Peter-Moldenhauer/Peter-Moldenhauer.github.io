@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Structures, Sorting and Such</title>
+    <!-- code below used for bootstrap -->
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  <!-- viewport is the users screen, and the 2 settings used here is the width of screen of device and initial scale means don't zoom in or out just 100% -->
+    
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  <!-- standard jquery library --> 
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	
+	<!-- code above used for bootstrap --> 
+	<link rel ="stylesheet" href = "style.css" type = "text/css">
+</head>
+<body>
+
+	<!-- navigation bar in bootstrap --> 
+	
+	<nav class="navbar navbar-inverse">  <!-- navbar-default is the styling of the navbar --> 
+		<div class="container-fluid">
+		
+			<!-- Logo Below --> 
+			<div class="navbar-header"> <!-- this lets bootstrap know that this isnt an actual button but just a logo --> 
+				<a href="index.html" class="navbar-brand">Home</a>  <!-- you could link this to the homepage but the # is used for a dead link --> 
+			</div>
+			
+			<!-- Menu Items Below -->
+			<div>
+				<ul class="nav navbar-nav">
+					
+					<!-- Drop down menu, this will be in the list at top but itself will contain another list -->
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures <span class="caret"></span></a>  <!-- this is the "link" with a down arrow the user can click on to see the other menu items in the dropdown list -->
+						<ul class="dropdown-menu"> <!-- dropdown menu items --> 
+							<li><a href="structures-overview.html">Overview of Data Structures</a></li>
+							<li><a href="array-Bag.html">Array - Bag ADT</a></li>
+							<li><a href="array-Stack.html">Array - Stack ADT</a></li>
+							<li><a href="dynamicArray-Bag.html">Dynamic Array - Bag ADT</a></li>
+							<li><a href="dynamicArray-Stack.html">Dynamic Array - Stack ADT</a></li>
+							<li><a href="dynamicArray-DQ.html">Dynamic Array - Queue and Deque</a></li>
+							<li><a href="slist-Stack.html">Single Linked List - Stack</a></li>
+							<li><a href="slist-Queue.html">Single Linked List - Queue</a></li>
+							<li><a href="dlist-DB.html">Double Linked List - Deque and Bag</a></li>
+							<li><a href="clist-Deque.html">Circular Linked List - Deque</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sorting Algorithms <span class="caret"></span></a>  <!-- this is the "link" with a down arrow the user can click on to see the other menu items in the dropdown list -->
+						<ul class="dropdown-menu"> <!-- dropdown menu items --> 
+							<li><a href="sorting-overview.html">Overview of Sorting Algorithms</a></li>
+							<li><a href="bubbleSort.html">Bubble Sort</a></li>
+						</ul>
+					</li>
+					
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Misc. Algorithms <span class="caret"></span></a>  <!-- this is the "link" with a down arrow the user can click on to see the other menu items in the dropdown list -->
+						<ul class="dropdown-menu"> <!-- dropdown menu items --> 
+							<li><a href="misc-overview.html">Overview of misc. algorithms</a></li>
+							<li><a href="binarySearch.html">Binary Search</a></li>
+							<li><a href="pageRank.html">PageRank</a></li>
+						</ul>
+					</li>
+					
+				</ul>
+				
+				<!-- right align menu items -->
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="aboutMe.html">About Me</a></li>
+				</ul>
+				
+			</div>
+		
+		</div>
+	</nav>
+	
+	<!-- Main Content (below navigation bar) -->
+	<div class="container">     <!-- class=container-fluid is full screen, class=container is just a fixed width --> 
+		
+		<center><img src="images/underConstruction.jpg"></center><br>
+		<h1 class="title">Circular Linked List implementation of the Deque (ADT)</h1>
+		<!-- a well is a "floating island" that has a boarder and a grey background -->
+		<div class="well">
+			
+			<p>
+				<b>circularList.h</b><br>				
+				<pre>
+#ifndef CIRCULAR_LIST_H&#10;#define CIRCULAR_LIST_H&#10;&#10;#ifndef TYPE&#10;#define TYPE double&#10;#endif&#10;&#10;#ifndef LT&#10;#define LT(A, B) ((A) &lt; (B))&#10;#endif&#10;&#10;#ifndef EQ&#10;#define EQ(A, B) ((A) == (B))&#10;#endif&#10;&#10;struct CircularList;&#10;&#10;struct CircularList* circularListCreate();&#10;void circularListDestroy(struct CircularList* list);&#10;void circularListPrint(struct CircularList* list);&#10;void circularListReverse(struct CircularList* list);&#10;&#10;// Deque interface&#10;&#10;void circularListAddFront(struct CircularList* list, TYPE value);&#10;void circularListAddBack(struct CircularList* list, TYPE value);&#10;TYPE circularListFront(struct CircularList* list);&#10;TYPE circularListBack(struct CircularList* list);&#10;void circularListRemoveFront(struct CircularList* list);&#10;void circularListRemoveBack(struct CircularList* list);&#10;int circularListIsEmpty(struct CircularList* list);&#10;&#10;#endif</pre>		
+				<b>circularList.c</b><br>
+				<pre>
+#include &lt;stdio.h&gt;&#10;#include &lt;stdlib.h&gt;&#10;#include &lt;assert.h&gt;&#10;#include &#34;circularList.h&#34;&#10;&#10;// Double link&#10;struct Link&#10;{&#10;&#9;TYPE value;&#10;&#9;struct Link * next;&#10;&#9;struct Link * prev;&#10;};&#10;&#10;struct CircularList&#10;{&#10;&#9;int size;&#10;&#9;struct Link* sentinel;&#10;};&#10;&#10;/**&#10; * Allocates the list's sentinel and sets the size to 0.&#10; * The sentinel's next and prev should point to the sentinel itself.&#10; */&#10;static void init(struct CircularList* list)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;&#9;// allocate memory for the sentinel&#10;&#9;list-&gt;sentinel = (struct Link *)malloc(sizeof(struct Link));&#10;&#10;&#9;// assert that sentinel has been allocated&#10;&#9;assert(list-&gt;sentinel != NULL);&#10;&#10;&#9;// set the sentinel next and previous to itself since there is only one sentinel&#10;&#9;list-&gt;sentinel-&gt;next = list-&gt;sentinel;&#10;&#9;list-&gt;sentinel-&gt;prev = list-&gt;sentinel;&#10;&#10;&#9;// initialize size to 0&#10;&#9;list-&gt;size = 0;&#10;}&#10;&#10;/**&#10; * Creates a link with the given value and NULL next and prev pointers.&#10; */&#10;static struct Link* createLink(TYPE value)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// allocate memory for a new link&#10;&#9;struct Link *newLink = (struct Link *)malloc(sizeof(struct Link));&#10;&#10;&#9;// assert that new link is not NULL&#10;&#9;assert(newLink != NULL);&#10;&#10;&#9;// initialize new link value with value parameter&#10;&#9;newLink-&gt;value = value;&#10;&#10;&#9;// return new link&#10;&#9;return newLink;&#10;}&#10;&#10;/**&#10; * Adds a new link with the given value after the given link and&#10; * increments the list's size.&#10; */&#10;static void addLinkAfter(struct CircularList* list, struct Link* link, TYPE value)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;&#9;// assert that link is not NULL&#10;&#9;assert(link != NULL);&#10;&#10;&#9;// assert that link is in list&#10;&#9;assert(link-&gt;next != NULL);&#10;&#9;assert(link-&gt;prev != NULL);&#10;&#10;&#9;// allocate memory for a new link with the value &#34;value&#34; parameter&#10;&#9;struct Link *newLink = createLink(value);&#10;&#10;&#9;// update link in front of insertion link to point back to inserted link&#10;&#9;link-&gt;next-&gt;prev = newLink;&#10;&#10;&#9;// set new link next to link in front of it&#10;&#9;newLink-&gt;next = link-&gt;next;&#10;&#10;&#9;// set link before to point to inserted link&#10;&#9;link-&gt;next = newLink;&#10;&#10;&#9;// set the previous from new link to point back to the link you inserted after&#10;    newLink-&gt;prev = link;&#10;&#10;    // update the List size&#10;    list-&gt;size++;&#10;}&#10;&#10;/**&#10; * Removes the given link from the list and&#10; * decrements the list's size.&#10; */&#10;static void removeLink(struct CircularList* list, struct Link* link)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;&#9;// assert that link is not NULL&#10;&#9;assert(link != NULL);&#10;&#10;&#9;// assert that link is in list&#10;&#9;assert(link-&gt;next != NULL);&#10;&#9;assert(link-&gt;prev != NULL);&#10;&#10;&#9;// adjust pointers to fill in the gap in the chain&#10;&#9;link-&gt;prev-&gt;next = link-&gt;next;&#10;&#9;link-&gt;next-&gt;prev = link-&gt;prev;&#10;&#10;&#9;// free the specified link&#10;&#9;free(link);&#10;&#10;&#9;// decrement the side of List&#10;&#9;list-&gt;size--;&#10;}&#10;&#10;/**&#10; * Allocates and initializes a list.&#10; */&#10;struct CircularList* circularListCreate()&#10;{&#10;&#9;struct CircularList* list = malloc(sizeof(struct CircularList));&#10;&#9;init(list);&#10;&#9;return list;&#10;}&#10;&#10;/**&#10; * Deallocates every link in the list and frees the list pointer.&#10; */&#10;void circularListDestroy(struct CircularList* list)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;    //free every link by looping through list until list size is 0&#10;    while(list-&gt;size != 0){&#10;        circularListRemoveFront(list);&#10;    }&#10;&#10;    //free the sentinel&#10;    free(list-&gt;sentinel);&#10;&#10;    //free the list itself&#10;    free(list);&#10;&#10;    //defensive programming&#10;    list = NULL;&#10;}&#10;&#10;/**&#10; * Adds a new link with the given value to the front of the deque.&#10; */&#10;void circularListAddFront(struct CircularList* list, TYPE value)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;&#9;// add link to the front of the list by adding it after the sentinel&#10;&#9;addLinkAfter(list, list-&gt;sentinel, value);&#10;}&#10;&#10;/**&#10; * Adds a new link with the given value to the back of the deque.&#10; */&#10;void circularListAddBack(struct CircularList* list, TYPE value)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;    // assert that list is not NULL&#10;    assert(list != NULL);&#10;&#10;    // add link to the back of list by adding it to the left of the sentinel accessed by prev&#10;    addLinkAfter(list, list-&gt;sentinel-&gt;prev, value);&#10;}&#10;&#10;/**&#10; * Returns the value of the link at the front of the deque.&#10; */&#10;TYPE circularListFront(struct CircularList* list)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;&#9;// make sure list is not empty&#10;&#9;assert(circularListIsEmpty(list) != 1);&#10;&#10;&#9;// return value of first link&#10;&#9;return list-&gt;sentinel-&gt;next-&gt;value;&#10;}&#10;&#10;/**&#10; * Returns the value of the link at the back of the deque.&#10; */&#10;TYPE circularListBack(struct CircularList* list)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;&#9;// make sure list is not empty&#10;&#9;assert(circularListIsEmpty(list) != 1);&#10;&#10;&#9;// return value of last link&#10;&#9;return list-&gt;sentinel-&gt;prev-&gt;value;&#10;}&#10;&#10;/**&#10; * Removes the link at the front of the deque.&#10; */&#10;void circularListRemoveFront(struct CircularList* list)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;&#9;// make sure list is not empty&#10;&#9;assert(circularListIsEmpty(list) != 1);&#10;&#10;&#9;// remove first link&#10;&#9;removeLink(list, list-&gt;sentinel-&gt;next);&#10;}&#10;&#10;/**&#10; * Removes the link at the back of the deque.&#10; */&#10;void circularListRemoveBack(struct CircularList* list)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;&#9;// make sure list is not empty&#10;&#9;assert(circularListIsEmpty(list) != 1);&#10;&#10;&#9;// remove last link&#10;&#9;removeLink(list, list-&gt;sentinel-&gt;prev);&#10;}&#10;&#10;/**&#10; * Returns 1 if the deque is empty and 0 otherwise.&#10; */&#10;int circularListIsEmpty(struct CircularList* list)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;&#9;//return 1 or 0 based on the value of size&#10;&#9;if (list-&gt;size == 0)&#10;        return 1;&#10;    else&#10;        return 0;&#10;}&#10;&#10;/**&#10; * Prints the values of the links in the deque from front to back.&#10; */&#10;void circularListPrint(struct CircularList* list)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;&#9;// assert that list is not empty&#10;&#9;assert(circularListIsEmpty(list) != 1);&#10;&#10;&#9;// create an iterator to use for in the loop&#10;&#9;struct Link *current = list-&gt;sentinel-&gt;next;&#10;&#10;&#9;// keep looping while iterator is not equal to the sentinel&#10;&#9;while(current != list-&gt;sentinel){&#10;        // print the value of the link&#10;        printf(&#34;%g &#34;, current-&gt;value);&#10;        // update the link to the next one&#10;        current = current-&gt;next;&#10;&#9;}&#10;&#9;printf(&#34;\n&#34;);&#10;}&#10;&#10;/**&#10; * Reverses the deque.&#10; */&#10;void circularListReverse(struct CircularList* list)&#10;{&#10;&#9;// FIXME: you must write this&#10;&#10;&#9;// assert that list is not NULL&#10;&#9;assert(list != NULL);&#10;&#10;&#9;// assert that the list is not empty&#10;&#9;assert(circularListIsEmpty(list) != 1);&#10;&#10;&#9;// create an iterator to loop through list&#10;&#9;struct Link *current = list-&gt;sentinel-&gt;next;&#10;&#10;&#9;// create a temp link to hold a link when reversing all of the links&#10;&#9;struct Link *temp = NULL;&#10;&#10;&#9;// loop through links and reverse the next and prev pointers&#10;&#9;while(current != list-&gt;sentinel){&#10;        temp = current-&gt;prev;&#10;        current-&gt;prev = current-&gt;next;&#10;        current-&gt;next = temp;&#10;        // update current to the next link&#10;        current = current-&gt;prev;&#10;&#9;}&#10;&#10;&#9;// update sentinel to change its first and next&#10;&#9;temp = list-&gt;sentinel-&gt;next;&#10;&#9;list-&gt;sentinel-&gt;next = list-&gt;sentinel-&gt;prev;&#10;&#9;list-&gt;sentinel-&gt;prev = temp;&#10;}</pre>				
+			</p>
+		</div>
+		
+		<center>&copy Peter Moldenhauer April 19th 2017 ~ moldenhp@oregonstate.edu</center><br> 
+		
+	</div>
+	
+</body>
+</html>

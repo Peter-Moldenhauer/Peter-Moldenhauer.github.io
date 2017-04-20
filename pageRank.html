@@ -85,32 +85,26 @@
 	<!-- Main Content (below navigation bar) -->
 	<div class="container">     <!-- class=container-fluid is full screen, class=container is just a fixed width --> 
 		
-		<!-- <center><img src="images/underConstruction.jpg"></center><br> -->
-		<h1 class="title">Binary Search Algorithm</h1>
+		<center><img src="images/underConstruction.jpg"></center><br> 
+		<h1 class="title">PageRank Algorithm</h1>
 		<!-- a well is a "floating island" that has a boarder and a grey background -->
 		<div class="well">
 			
 			<p>
-				The binary search algorithm is a search algorithm that finds the position of a target value within a sorted array. The binary search algorithm starts by first comparing the target 
-				value to the middle element of a given array. If the values are unequal, the half in which the target value cannot lie (either upper or lower half) is eliminated. 
-				The search then continues on the remaining half until it is successful at finding the target value or until the remaining half is empty (in this case the target 
-				value is not contained in the array). Binary search runs at worst O(log n) complexity, also known as logarithmic time, where n is the number of 
-				elements in the array. Binary search also only takes constant (O(1)) space, meaning that the space taken by the algorithm is the same for any number elements in the 
-				array. <br><br>
+				The PageRank algorithm is probably my favority algorithm of them all. This is the algorithm that is used by Google searches to rank websites in their 
+				search engine results. When you enter in a search word or phrase in Google and click "search", you will most likely find the desired web link within the first 
+				few links that are returned (and most definitely on the first page of the results). This is all made possible by the PageRank algorithm. Before Google, it 
+				was common for somone to click on page after page of results from a search engine to find a desired web link. Think about it...when was the last time that 
+				you actually clicked on "page 2" of the results from a Google search?<br><br>
 				
-				Below, I have implemented the binary search algorithm using an array as the container. Binary search requires that the container 1) have random access so that the 
-				search can look at any particular value in the collection in constant time and 2) have the elements in the container already be in sorted order. For these reasons, 
-				an array is used as the container that binary search runs on.<br><br>
+				In sort, PageRank is a way of measuring the importance of website pages. PageRank was named after Larry Page - one of the founders of Google. 
+				"PageRank works by counting the number and quality of links to a page to determine a rough estimate of how important the website is. The 
+				underlying assumption is that more important websites are likely to receive more links from other websites." 
+				<a href="https://web.archive.org/web/20111104131332/https://www.google.com/competition/howgooglesearchworks.html">(source)</a> PageRank is not 
+				the only algorithm used by Google currently uses to order search results, but it is however the very first algorithm used by Google and it is 
+				also the best-known.
 				
-				The binary search return values are as follows: If the value is found, the index of the value in the array is returned. If the value is not found, the index of the 
-				array where the value COULD be inserted without violating ordering is returned. Note: the returned index in this case can be larger than a legal index in the array.<br><br>
-
-				The binary search function arguments are as follows: 1st argument - Takes the array of values (of TYPE), 2nd argument - Takes the size of that array, 3rd argument - 
-				Takes the value that is to be searched for (value of TYPE).<br><br>
 				
-				<b>Binary Search function:</b><br>
-				<pre>
-int _binarySearch(TYPE * data, int size, TYPE val)&#10;{&#10;&#9;int low = 0;        // initialize low to index[0]&#10;&#9;int high = size;    // initialize high to index[size] Note: this is one after the last element in the array &#10;&#9;int mid; &#10;&#9;&#10;&#9;while (low &lt; high)&#10;&#9;{&#10;&#9;&#9;mid = (low + high) / 2;   // initialize mid to the middle of the array &#10;&#9;&#9;if (data[mid] &lt; val)&#10;&#9;&#9;&#9;low = mid + 1;&#10;&#9;&#9;else &#10;&#9;&#9;&#9;high = mid;&#10;&#9;}&#10;&#9;return low; &#10;}</pre>
 			</p>
 			
 		</div>
